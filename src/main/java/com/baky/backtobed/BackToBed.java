@@ -1,6 +1,5 @@
 package com.baky.backtobed;
 
-import com.baky.backtobed.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -11,7 +10,5 @@ public class BackToBed implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
-	public void onInitialize() {
-		ModItems.register();
-	}
+	public void onInitialize() {}
 }
