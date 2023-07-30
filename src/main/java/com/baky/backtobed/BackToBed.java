@@ -1,19 +1,14 @@
 package com.baky.backtobed;
 
-import com.baky.backtobed.item.ModItems;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.fabricmc.api.ModInitializer;
 
-@Mod(BackToBed.MOD_ID)
-public class BackToBed
-{
-    public static final String MOD_ID = "backtobed";
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-    public BackToBed()
-    {
-        ModItems.register(FMLJavaModLoadingContext.get().getModEventBus());
+public class BackToBed implements ModInitializer {
+	public static final String MOD_ID = "backtobed";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+	@Override
+	public void onInitialize() {}
 }
