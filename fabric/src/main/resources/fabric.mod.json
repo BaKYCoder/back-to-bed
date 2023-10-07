@@ -5,16 +5,22 @@
 
   "name": "Back To Bed",
   "description": "Enjoy the convenience of effortless homeward travels.",
-  "authors": [],
+  "authors": ["BaKY"],
   "contact": {},
 
   "license": "MIT",
-  "icon": "icon.png",
+  "icon": "assets/backtobed/icon.png",
 
   "environment": "*",
-  "entrypoints": {},
+  "entrypoints": {
+    "main": [
+      "com.baky.backtobed.fabric.BackToBedFabric"
+    ]
+  },
   "depends": {
     "fabricloader": ">=0.14.14",
-    "minecraft": ">=1.18"
+    "minecraft": ">=1.18 <1.19",
+    "fabric": ">=0.43.1+1.18",
+    "java": ">=17"
   }
 }
