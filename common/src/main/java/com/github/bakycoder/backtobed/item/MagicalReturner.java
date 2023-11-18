@@ -54,6 +54,7 @@ public class MagicalReturner extends Item {
     public MagicalReturner() {
         super(new Item.Properties()
                 .tab(CreativeModeTab.TAB_TOOLS)
+                .stacksTo(1)
         );
     }
 
