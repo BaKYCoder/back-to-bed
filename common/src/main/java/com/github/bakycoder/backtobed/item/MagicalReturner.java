@@ -112,7 +112,7 @@ public class MagicalReturner extends Item {
 
         // Check if the player is in the overworld dimension
         if (player.getCommandSenderWorld().dimension() != Level.OVERWORLD) {
-            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.teleport_for_overworld"), false);
+            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.teleport_for_overworld"), true);
 
             // Stop item usage and add cooldown
             player.stopUsingItem();
@@ -124,7 +124,7 @@ public class MagicalReturner extends Item {
 
         // Check if the respawn position is not set
         if (respawnPos == null) {
-            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.no_respawn_point"), false);
+            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.no_respawn_point"), true);
 
             player.stopUsingItem();
             player.getCooldowns().addCooldown(this, ITEM_COOLDOWN_TICKS);
@@ -173,7 +173,7 @@ public class MagicalReturner extends Item {
             serverLevel.sendParticles(player, dustColorTransitionOptions, true, respawnPos.getX() + 0.5, respawnPos.getY() + 0.6D, respawnPos.getZ() + 0.5, 85, 0.85D, 0.75D, .85D, 0.005D);
         } else {
             // Display a message indicating no access to the bed
-            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.no_access_to_bed"), false);
+            player.displayClientMessage(Component.translatable("item.backtobed.magical_returner.condition.no_access_to_bed"), true);
         }
 
         // Stop item usage and add cooldown
