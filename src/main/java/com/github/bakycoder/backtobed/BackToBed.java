@@ -1,5 +1,6 @@
 package com.github.bakycoder.backtobed;
 
+import com.github.bakycoder.backtobed.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -17,5 +18,6 @@ public class BackToBed {
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public BackToBed(IEventBus modEventBus) {
         // Register the Deferred Register to the mod event bus so items get registered
+        ModItems.register(modEventBus);
     }
 }
