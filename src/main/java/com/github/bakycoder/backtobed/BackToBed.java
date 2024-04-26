@@ -6,7 +6,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
+/**
+ * Main class representing the BackToBed mod.
+ */
 @Mod(BackToBed.MOD_ID)
 public class BackToBed {
     // Define mod id in a common place for everything to reference
@@ -14,10 +16,13 @@ public class BackToBed {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    // The constructor for the mod class is the first code that is run when mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
+    /**
+     * Constructor for the BackToBed mod class.
+     *
+     * @param modEventBus The event bus for registering mod components.
+     */
     public BackToBed(IEventBus modEventBus) {
         // Register the Deferred Register to the mod event bus so items get registered
-        ModItems.register(modEventBus);
+        ModItems.initialize(modEventBus);
     }
 }
