@@ -1,4 +1,4 @@
-# Back To Bed [1.20.x]
+# Back To Bed [1.20.5 NeoForge]
 
 > Handy return device, permitting you to relocate to the spawn point with ease.
 

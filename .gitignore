@@ -5,6 +5,9 @@
 *.ipr
 *.iws
 
+# NeoForge
+runs/
+
 # IntelliJ
 out/
 # mpeltonen/sbt-idea plugin
