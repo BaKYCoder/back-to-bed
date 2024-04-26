@@ -22,7 +22,15 @@ public class BackToBed {
      * @param modEventBus The event bus for registering mod components.
      */
     public BackToBed(IEventBus modEventBus) {
-        // Register the Deferred Register to the mod event bus so items get registered
-        ModItems.initialize(modEventBus);
+        BackToBed.LOGGER.info("Initializing mod...");
+
+        try {
+            // Register the Deferred Register to the mod event bus so items get registered
+            ModItems.initialize(modEventBus);
+
+            BackToBed.LOGGER.info("Mod initialized successfully!");
+        } catch (Exception e) {
+            BackToBed.LOGGER.error("Failed to initialize mod", e);
+        }
     }
 }
