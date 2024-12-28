@@ -1,6 +1,8 @@
 package com.github.bakycoder.backtobed;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.world.item.CreativeModeTabs;
 
 public class BackToBed implements ModInitializer {
     
@@ -14,5 +16,9 @@ public class BackToBed implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
+
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(content ->
+                content.accept(AllItems.MAGICAL_RETURNER)
+        );
     }
 }
