@@ -1,0 +1,4 @@
+# Version 1.2.0
+
+- Fixed an issue where the Magic Returner failed to display the condition for overworld teleportation.
+- Now, if teleportation to the spawn point is not successful, the cooldown will not be applied.
