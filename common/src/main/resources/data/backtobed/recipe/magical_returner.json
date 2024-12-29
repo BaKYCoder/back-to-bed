@@ -1,4 +1,4 @@
- {
+{
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
@@ -21,7 +21,8 @@
     " E "
   ],
   "result": {
-    "item": "backtobed:magical_returner"
+    "count": 1,
+    "id": "backtobed:magical_returner"
   },
   "show_notification": true
 }
