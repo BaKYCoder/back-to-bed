@@ -7,7 +7,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
 public class AllItems {
-    public static final Item MAGICAL_RETURNER = register("magical_returner", new MagicalReturner(new Item.Properties().stacksTo(1)));
+    public static final Item MAGICAL_RETURNER = register("magical_returner",
+            new MagicalReturner(new Item
+                    .Properties()
+                    .stacksTo(1)
+            )
+    );
 
     private static <T extends Item> T register(String path, T item) {
         return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(Constants.MOD_ID, path), item);
