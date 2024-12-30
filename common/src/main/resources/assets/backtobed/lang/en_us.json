@@ -6,9 +6,16 @@
   "item.backtobed.magical_returner.condition.no_respawn_point": "No respawn point set, teleportation failed",
   "item.backtobed.magical_returner.condition.no_access_to_bed": "Unable to reach your bed, it may be destroyed",
 
+  "item.backtobed.hells_returner": "§eHell's Returner",
+  "item.backtobed.hells_returner.tooltip.behavior": "Hold right-click to teleport to your bed.",
+  "item.backtobed.hells_returner.condition.teleport_for_nether": "This returner works only in the Nether",
+  "item.backtobed.hells_returner.condition.no_respawn_point": "No respawn point set, teleportation failed",
+  "item.backtobed.hells_returner.condition.no_access_to_bed": "Unable to reach your bed, it may be destroyed",
+
   "backtobed.tooltip.key_hold": "Hold [%1%s] for details...",
   "backtobed.tooltip.dimensions": "Allowed Dimensions:",
   "backtobed.tooltip.feature": "Feature:",
 
-  "backtobed.dimension.overworld": "Overworld"
+  "backtobed.dimension.overworld": "The Overworld",
+  "backtobed.dimension.nether": "The Nether"
 }
