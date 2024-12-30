@@ -1,10 +1,14 @@
 {
   "item.backtobed.magical_returner": "§bMagical Returner",
-  "item.backtobed.magical_returner.tooltip.behavior": "Teleports you straight to your chosen respawn point, your beloved bed!",
-  "item.backtobed.magical_returner.tooltip.further": "Allows teleportation along with your mount when you're riding it.",
-  "item.backtobed.magical_returner.condition.teleport_for_overworld": "Teleportation is only available in the overworld.",
-  "item.backtobed.magical_returner.condition.no_respawn_point": "The respawn point is not set.",
-  "item.backtobed.magical_returner.condition.no_access_to_bed": "Unable to access the bed, possibly destroyed!",
+  "item.backtobed.magical_returner.tooltip.behavior": "Hold right-click to teleport to your bed.",
+  "item.backtobed.magical_returner.tooltip.feature": "Includes your mount in the teleport if you’re riding.",
+  "item.backtobed.magical_returner.condition.teleport_for_overworld": "This returner works only in the Overworld",
+  "item.backtobed.magical_returner.condition.no_respawn_point": "No respawn point set, teleportation failed",
+  "item.backtobed.magical_returner.condition.no_access_to_bed": "Unable to reach your bed, it may be destroyed",
 
-  "backtobed.tooltip.key_hold": "Hold [%1%s] for more"
+  "backtobed.tooltip.key_hold": "Hold [%1%s] for details...",
+  "backtobed.tooltip.dimensions": "Allowed Dimensions:",
+  "backtobed.tooltip.feature": "Feature:",
+
+  "backtobed.dimension.overworld": "Overworld"
 }
