@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:quartz"
+    },
+    "P": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "pattern": [
+    " # ",
+    "PAP",
+    " E "
+  ],
+  "result": {
+    "count": 1,
+    "id": "backtobed:hells_returner"
+  },
+  "show_notification": true
+}
