@@ -2,8 +2,9 @@ package com.github.bakycoder.backtobed.utility;
 
 public enum TooltipKey {
     BEHAVIOR("behavior"),
-    FURTHER("further"),
-    KEY_HOLD("key_hold");
+    FEATURE("feature"),
+    KEY_HOLD("key_hold"),
+    DIMENSIONS("dimensions");
 
     private final String key;
 

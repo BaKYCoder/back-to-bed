@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lang {
-    private static final int MAX_TEXT_LINE_LENGTH = 28;
+    private static final int MAX_TEXT_LINE_LENGTH = 31;
 
-    public static List<Component> getFormatted(String key, ChatFormatting style, boolean newLineAtEnd) {
+    public static List<Component> getFormatted(String key, ChatFormatting style, boolean startWithSpace, boolean newLineAtEnd) {
         List<Component> lines = new ArrayList<>();
 
         String text = I18n.get(key);
@@ -23,14 +23,11 @@ public class Lang {
         String[] words = text.split(" ");
         StringBuilder currLine = new StringBuilder();
 
-        if (!currLine.isEmpty()) {
-            lines.add(Component.literal(currLine.toString()).withStyle(style));
-        }
-
         for (String word : words) {
             if (currLine.length() + word.length() + 1 <= MAX_TEXT_LINE_LENGTH) {
-                if (!currLine.isEmpty()) {
+                if (!currLine.isEmpty() || startWithSpace) {
                     currLine.append(" ");
+                    startWithSpace = false;
                 }
                 currLine.append(word);
             } else {
@@ -51,7 +48,7 @@ public class Lang {
     }
 
     public static List<Component> getFormatted(String key, ChatFormatting style) {
-        return getFormatted(key, style, false);
+        return getFormatted(key, style, false, false);
     }
 
     public static MutableComponent getHighlighted(String key, String arg, ChatFormatting keyStyle, ChatFormatting argStyle) {
@@ -75,6 +72,10 @@ public class Lang {
 
     public static String getTooltipKey(TooltipKey keyType) {
         return getSeparatedArgs(Constants.MOD_ID, "tooltip", keyType.getKey());
+    }
+
+    public static String getDimensionKey(String dimension) {
+        return getSeparatedArgs(Constants.MOD_ID, "dimension", dimension);
     }
 
     public static String getItemTooltipKey(ItemStack stack, TooltipKey keyType) {
