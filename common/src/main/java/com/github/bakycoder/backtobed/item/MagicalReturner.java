@@ -40,14 +40,23 @@ public class MagicalReturner extends Item {
         super.appendHoverText(stack, context, components, flag);
 
         String key = Lang.getItemTooltipKey(stack, TooltipKey.BEHAVIOR);
-        components.addAll(Lang.getFormatted(key, ChatFormatting.GRAY, true));
+        components.addAll(Lang.getFormatted(key, ChatFormatting.GRAY, true, true));
 
         if (Screen.hasShiftDown()) {
-            key = Lang.getItemTooltipKey(stack, TooltipKey.FURTHER);
-            components.addAll(Lang.getFormatted(key, ChatFormatting.GREEN));
+            key = Lang.getTooltipKey(TooltipKey.DIMENSIONS);
+            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_GRAY));
+
+            key = Lang.getDimensionKey("overworld");
+            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_GREEN, true, true));
+
+            key = Lang.getTooltipKey(TooltipKey.FEATURE);
+            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_GRAY));
+
+            key = Lang.getItemTooltipKey(stack, TooltipKey.FEATURE);
+            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
         } else {
             key = Lang.getTooltipKey(TooltipKey.KEY_HOLD);
-            components.add(Lang.getHighlighted(key, "SHIFT", ChatFormatting.YELLOW, ChatFormatting.GOLD));
+            components.add(Lang.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
 
