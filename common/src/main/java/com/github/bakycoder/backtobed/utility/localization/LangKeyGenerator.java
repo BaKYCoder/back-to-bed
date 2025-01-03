@@ -12,30 +12,30 @@ public class LangKeyGenerator {
 
     private static String generateItemLocalization(Item item, String category, String suffix) {
         String itemId = BuiltInRegistries.ITEM.getKey(item).getPath();
-        return getSeparatedArgs("item", Constants.MOD_ID, itemId, category, suffix);
+        return getSeparatedArgs(CategoryKeys.ITEM.getKey(), Constants.MOD_ID, itemId, category, suffix);
     }
 
     private static String generateItemLocalization(String itemId, String category, String suffix) {
-        return getSeparatedArgs("item", Constants.MOD_ID, itemId, category, suffix);
+        return getSeparatedArgs(CategoryKeys.ITEM.getKey(), Constants.MOD_ID, itemId, category, suffix);
     }
 
     public static String getTooltip(TooltipKeys lKey) {
-        return getSeparatedArgs(Constants.MOD_ID, "tooltip", lKey.getKey());
+        return getSeparatedArgs(Constants.MOD_ID, CategoryKeys.TOOLTIP.getKey(), lKey.getKey());
     }
 
     public static String getDimension(String dimension) {
-        return getSeparatedArgs(Constants.MOD_ID, "dimension", dimension);
+        return getSeparatedArgs(Constants.MOD_ID, CategoryKeys.DIMENSION.getKey(), dimension);
     }
 
     public static String getItemTooltip(Item item, TooltipKeys keyType) {
-        return generateItemLocalization(item, "tooltip", keyType.getKey());
+        return generateItemLocalization(item, CategoryKeys.TOOLTIP.getKey(), keyType.getKey());
     }
 
     public static String getItemTooltip(String itemId, TooltipKeys keyType) {
-        return generateItemLocalization(itemId, "tooltip", keyType.getKey());
+        return generateItemLocalization(itemId, CategoryKeys.TOOLTIP.getKey(), keyType.getKey());
     }
 
     public static String getItemCondition(Item item, String condition) {
-        return generateItemLocalization(item, "condition", condition);
+        return generateItemLocalization(item, CategoryKeys.CONDITION.getKey(), condition);
     }
 }
