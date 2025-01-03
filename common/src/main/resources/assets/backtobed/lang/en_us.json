@@ -12,5 +12,8 @@
   "item.backtobed.magical_returner": "§bMagical Returner",
   "_item.backtobed.magical_returner.tooltip.feature": "Includes your mount in the teleport if you’re riding.",
 
-  "item.backtobed.hells_returner": "§eHell's Returner"
+  "item.backtobed.hells_returner": "§eHell's Returner",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether"
 }
