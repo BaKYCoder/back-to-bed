@@ -1,7 +1,8 @@
 package com.github.bakycoder.backtobed.item;
 
-import com.github.bakycoder.backtobed.utility.Lang;
-import com.github.bakycoder.backtobed.utility.TooltipKey;
+import com.github.bakycoder.backtobed.utility.localization.LangKeyGenerator;
+import com.github.bakycoder.backtobed.utility.localization.LangHelper;
+import com.github.bakycoder.backtobed.utility.localization.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -39,18 +40,18 @@ public class HellsReturner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
-        String key = Lang.getItemTooltipKey(stack, TooltipKey.BEHAVIOR);
-        components.addAll(Lang.getFormatted(key, ChatFormatting.GRAY, true, true));
+        String key = LangKeyGenerator.getItemTooltip(stack.getItem(), TooltipKeys.FUNCTIONALITY);
+        components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
         if (Screen.hasShiftDown()) {
-            key = Lang.getTooltipKey(TooltipKey.DIMENSIONS);
-            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_GRAY));
+            key = LangKeyGenerator.getTooltip(TooltipKeys.DIMENSIONS);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-            key = Lang.getDimensionKey("nether");
-            components.addAll(Lang.getFormatted(key, ChatFormatting.DARK_RED, true, false));
+            key = LangKeyGenerator.getDimension("nether");
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_RED, true, false));
         } else {
-            key = Lang.getTooltipKey(TooltipKey.KEY_HOLD);
-            components.add(Lang.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
+            key = LangKeyGenerator.getTooltip(TooltipKeys.KEY_HOLD);
+            components.add(LangHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
 
@@ -67,7 +68,7 @@ public class HellsReturner extends Item {
 
     private void handleUseInterrupt(String condition, ItemStack stack, ServerPlayer player, boolean addCooldown) {
         if (condition != null) {
-            String key = Lang.getItemConditionKey(stack, condition);
+            String key = LangKeyGenerator.getItemCondition(stack.getItem(), condition);
             player.displayClientMessage(Component.translatable(key), true);
         }
 

@@ -32,11 +32,15 @@ public class Returner extends Item {
         components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
         if(Screen.hasShiftDown()) {
+            key = LangKeyGenerator.getItemTooltip(itemId, TooltipKeys.COOLDOWN);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+
             key = LangKeyGenerator.getItemTooltip(itemId, TooltipKeys.DIMENSIONS);
             components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-            String dimName = allowedLevel.location().getPath().toUpperCase();
-            components.add(Component.literal(' ' + dimName).withStyle(ChatFormatting.YELLOW));
+            String dimName = allowedLevel.location().getPath();
+            key = LangKeyGenerator.getDimension(dimName);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
         } else {
             key = LangKeyGenerator.getItemTooltip(itemId, TooltipKeys.KEY_HOLD);
             components.add(LangHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
