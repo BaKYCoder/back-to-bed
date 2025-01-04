@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.utility.localization;
+package com.github.bakycoder.backtobed.util.localization;
 
 public enum CategoryKeys {
     ITEM("item"),

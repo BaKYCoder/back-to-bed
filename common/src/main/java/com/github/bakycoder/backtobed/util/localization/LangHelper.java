@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.utility.localization;
+package com.github.bakycoder.backtobed.util.localization;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;

@@ -1,6 +1,6 @@
 package com.github.bakycoder.backtobed.mixin;
 
-import com.github.bakycoder.backtobed.Constants;
+import com.github.bakycoder.backtobed.BackToBed;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,7 +12,7 @@ public class MixinMinecraft {
     
     @Inject(at = @At("TAIL"), method = "<init>")
     private void init(CallbackInfo info) {
-        Constants.LOG.info("This line is printed by the Back to Bed common mixin!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        BackToBed.LOGGER.info("This line is printed by the Back to Bed common mixin!");
+        BackToBed.LOGGER.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

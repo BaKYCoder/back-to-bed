@@ -1,6 +1,6 @@
 package com.github.bakycoder.backtobed.mixin;
 
-import com.github.bakycoder.backtobed.Constants;
+import com.github.bakycoder.backtobed.BackToBed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ public class MixinTitleScreen {
 
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info) {
-        Constants.LOG.info("This line is printed by the Back to Bed mixin from NeoForge!");
-        Constants.LOG.info("MC Version: {}", Minecraft.getInstance().getVersionType());
+        BackToBed.LOGGER.info("This line is printed by the Back to Bed mixin from NeoForge!");
+        BackToBed.LOGGER.info("MC Version: {}", Minecraft.getInstance().getVersionType());
     }
 }

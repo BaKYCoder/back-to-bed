@@ -1,6 +1,6 @@
 package com.github.bakycoder.backtobed.platform;
 
-import com.github.bakycoder.backtobed.Constants;
+import com.github.bakycoder.backtobed.BackToBed;
 import com.github.bakycoder.backtobed.platform.services.IItemRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
@@ -17,7 +17,7 @@ public class FabricItemRegistry implements IItemRegistry {
 
     @Override
     public <T extends Item> T register(String path, T item) {
-        return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(Constants.MOD_ID, path), item);
+        return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(BackToBed.MOD_ID, path), item);
     }
 
     @Override

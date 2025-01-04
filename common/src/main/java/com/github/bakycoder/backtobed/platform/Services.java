@@ -1,6 +1,6 @@
 package com.github.bakycoder.backtobed.platform;
 
-import com.github.bakycoder.backtobed.Constants;
+import com.github.bakycoder.backtobed.BackToBed;
 import com.github.bakycoder.backtobed.platform.services.IItemRegistry;
 import com.github.bakycoder.backtobed.platform.services.IPlatformHelper;
 
@@ -28,7 +28,7 @@ public class Services {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()
                 .orElseThrow(() -> new NullPointerException("Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        BackToBed.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

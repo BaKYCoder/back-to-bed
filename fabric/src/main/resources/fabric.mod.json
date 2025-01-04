@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "com.github.bakycoder.backtobed.BackToBed"
+            "com.github.bakycoder.backtobed.BackToBedFabric"
         ]
     },
     "mixins": [

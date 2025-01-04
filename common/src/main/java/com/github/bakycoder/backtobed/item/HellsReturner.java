@@ -1,8 +1,8 @@
 package com.github.bakycoder.backtobed.item;
 
-import com.github.bakycoder.backtobed.utility.localization.LangKeyGenerator;
-import com.github.bakycoder.backtobed.utility.localization.LangHelper;
-import com.github.bakycoder.backtobed.utility.localization.TooltipKeys;
+import com.github.bakycoder.backtobed.util.localization.LangKeyGenerator;
+import com.github.bakycoder.backtobed.util.localization.LangHelper;
+import com.github.bakycoder.backtobed.util.localization.TooltipKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
