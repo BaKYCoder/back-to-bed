@@ -1,11 +1,10 @@
 package com.github.bakycoder.backtobed;
 
+import com.github.bakycoder.backtobed.platform.Services;
+
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
-
-import java.util.Arrays;
 
 public class BackToBed implements ModInitializer {
     
@@ -20,11 +19,9 @@ public class BackToBed implements ModInitializer {
         Constants.LOG.info("Hello Fabric world!");
         CommonClass.init();
 
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(content ->
-                content.acceptAll(Arrays.asList(
-                        new ItemStack(AllItems.HELLS_RETURNER),
-                        new ItemStack(AllItems.MAGICAL_RETURNER)
-                ))
+        Services.ITEM_REGISTRY.addToCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES,
+                new ItemStack(AllItems.MAGICAL_RETURNER),
+                new ItemStack(AllItems.HELLS_RETURNER)
         );
     }
 }
