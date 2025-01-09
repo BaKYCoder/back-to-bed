@@ -13,6 +13,6 @@ public class BackToBedFabric implements ModInitializer {
         // Use Fabric to bootstrap the Common mod.s
         BackToBed.LOGGER.info("Hello Fabric world!");
 
-        BackToBed.setup();
+        BackToBed.initCommon();
     }
 }

@@ -1,19 +1,18 @@
 package com.github.bakycoder.backtobed;
 
 
+import com.github.bakycoder.backtobed.platform.NeoForgeItemRegistrar;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 
 @Mod(BackToBed.MOD_ID)
 public class BackToBedNeoForge {
 
-    public BackToBedNeoForge(IEventBus eventBus) {
-        // This method is invoked by the NeoForge mod loader when it is ready
-        // to load your mod. You can access NeoForge and Common code in this
-        // project.
-
-        // Use NeoForge to bootstrap the Common mod.
+    public BackToBedNeoForge(IEventBus eBus) {
         BackToBed.LOGGER.info("Hello NeoForge world!");
-        BackToBed.setup();
+
+        BackToBed.initCommon();
+
+        NeoForgeItemRegistrar.registerToEventBus(eBus);
     }
 }

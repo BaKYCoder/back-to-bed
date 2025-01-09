@@ -1,5 +1,6 @@
 package com.github.bakycoder.backtobed;
 
+import com.github.bakycoder.backtobed.platform.ForgeItemRegistrar;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -12,6 +13,8 @@ public class BackToBedForge {
     public BackToBedForge() {
         BackToBed.LOGGER.info("Hello Forge world!");
 
-        BackToBed.setup();
+        BackToBed.initCommon();
+
+        ForgeItemRegistrar.registerToEventBus(MOD_EVENT_BUS);
     }
 }
