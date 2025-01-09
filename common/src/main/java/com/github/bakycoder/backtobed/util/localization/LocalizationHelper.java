@@ -8,7 +8,7 @@ import net.minecraft.network.chat.MutableComponent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LangHelper {
+public class LocalizationHelper {
     private static final int MAX_TEXT_LINE_LENGTH = 31;
 
     public static List<Component> getFormatted(String key, ChatFormatting style, boolean startWithSpace, boolean newLineAtEnd) {
