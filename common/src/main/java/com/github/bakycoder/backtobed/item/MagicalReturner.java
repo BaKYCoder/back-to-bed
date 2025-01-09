@@ -1,9 +1,9 @@
 package com.github.bakycoder.backtobed.item;
 
-import com.github.bakycoder.backtobed.util.localization.LangKeyGenerator;
-import com.github.bakycoder.backtobed.util.localization.LangHelper;
-import com.github.bakycoder.backtobed.util.localization.TooltipKeys;
+import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
+import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
 
+import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -42,24 +42,24 @@ public class MagicalReturner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
-        String key = LangKeyGenerator.getItemTooltip(this, TooltipKeys.FUNCTIONALITY);
-        components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+        String key = LocalizationKeyGenerator.getItemTooltip(this, LocalizationKeys.FUNCTIONALITY);
+        components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
         if (Screen.hasShiftDown()) {
-            key = LangKeyGenerator.getTooltip(TooltipKeys.DIMENSIONS);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+            key = LocalizationKeyGenerator.getTooltip(LocalizationKeys.DIMENSIONS);
+            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-            key = LangKeyGenerator.getDimension("overworld");
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GREEN, true, true));
+            key = LocalizationKeyGenerator.getDimension("overworld");
+            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GREEN, true, true));
 
-            key = LangKeyGenerator.getTooltip(TooltipKeys.COOLDOWN);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+            key = LocalizationKeyGenerator.getTooltip(LocalizationKeys.COOLDOWN);
+            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-            key = LangKeyGenerator.getItemTooltip(this, TooltipKeys.COOLDOWN);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
+            key = LocalizationKeyGenerator.getItemTooltip(this, LocalizationKeys.COOLDOWN);
+            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
         } else {
-            key = LangKeyGenerator.getTooltip(TooltipKeys.KEY_HOLD);
-            components.add(LangHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
+            key = LocalizationKeyGenerator.getTooltip(LocalizationKeys.KEY_HOLD);
+            components.add(LocalizationHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
 
@@ -76,7 +76,7 @@ public class MagicalReturner extends Item {
 
     private void handleUseInterrupt(String condition, ItemStack stack, ServerPlayer player, boolean addCooldown) {
         if (condition != null) {
-            String key = LangKeyGenerator.getItemCondition(this, condition);
+            String key = LocalizationKeyGenerator.getItemCondition(this, condition);
             player.displayClientMessage(Component.translatable(key), true);
         }
 
