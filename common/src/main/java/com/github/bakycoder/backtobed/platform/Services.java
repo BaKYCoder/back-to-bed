@@ -1,7 +1,6 @@
 package com.github.bakycoder.backtobed.platform;
 
 import com.github.bakycoder.backtobed.BackToBed;
-import com.github.bakycoder.backtobed.platform.services.IItemRegistry;
 import com.github.bakycoder.backtobed.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
@@ -17,8 +16,6 @@ public class Services {
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
 
     // ! public static final ICommonConfig CONFIG = load(ICommonConfig.class);
-
-    public static final IItemRegistry ITEM_REGISTRY = load(IItemRegistry.class);
 
     // This code is used to load a service for the current environment. Your implementation of the service must be defined
     // manually by including a text file in META-INF/services named with the fully qualified class name of the service.

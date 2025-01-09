@@ -14,6 +14,6 @@ public class BackToBedNeoForge {
 
         // Use NeoForge to bootstrap the Common mod.
         BackToBed.LOGGER.info("Hello NeoForge world!");
-        BackToBed.init();
+        BackToBed.setup();
     }
 }

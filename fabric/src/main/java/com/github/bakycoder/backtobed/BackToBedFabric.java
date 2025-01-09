@@ -1,10 +1,6 @@
 package com.github.bakycoder.backtobed;
 
-import com.github.bakycoder.backtobed.platform.Services;
-
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemStack;
 
 public class BackToBedFabric implements ModInitializer {
     
@@ -14,13 +10,9 @@ public class BackToBedFabric implements ModInitializer {
         // to load your mod. You can access Fabric and Common code in this
         // project.
 
-        // Use Fabric to bootstrap the Common mod.
+        // Use Fabric to bootstrap the Common mod.s
         BackToBed.LOGGER.info("Hello Fabric world!");
-        BackToBed.init();
 
-        Services.ITEM_REGISTRY.addToCreativeTab(CreativeModeTabs.TOOLS_AND_UTILITIES,
-                new ItemStack(ModItems.MAGICAL_RETURNER),
-                new ItemStack(ModItems.HELLS_RETURNER)
-        );
+        BackToBed.setup();
     }
 }
