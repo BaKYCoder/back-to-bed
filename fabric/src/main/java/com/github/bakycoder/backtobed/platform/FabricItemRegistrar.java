@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public class FabricItemRegistrar implements IItemRegistrar {
     @Override
-    public <T extends Item> void register(String path, Supplier<T> item) {
-        Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(BackToBed.MOD_ID, path), item.get());
+    public <T extends Item> T register(String path, Supplier<T> item) {
+        return Registry.register(BuiltInRegistries.ITEM, ResourceLocation.tryBuild(BackToBed.MOD_ID, path), item.get());
     }
 }

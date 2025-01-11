@@ -6,6 +6,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
@@ -13,8 +14,8 @@ public class ForgeItemRegistrar implements IItemRegistrar {
     private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BackToBed.MOD_ID);
 
     @Override
-    public <T extends Item> void register(String path, Supplier<T> item) {
-        ITEMS.register(path, item);
+    public <T extends Item> RegistryObject<T> register(String path, Supplier<T> item) {
+        return ITEMS.register(path, item);
     }
 
     public static void registerToEventBus(IEventBus eBus) {
