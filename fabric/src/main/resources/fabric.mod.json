@@ -12,7 +12,7 @@
         "sources": "https://github.com/BaKYCoder/back-to-bed"
     },
     "license": "${license}",
-    "icon": "icon.png",
+    "icon": "${mod_id}.png",
     "environment": "*",
     "entrypoints": {
         "main": [
