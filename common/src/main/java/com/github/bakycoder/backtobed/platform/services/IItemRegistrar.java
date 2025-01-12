@@ -5,5 +5,9 @@ import net.minecraft.world.item.Item;
 import java.util.function.Supplier;
 
 public interface IItemRegistrar {
-    <T extends Item> Object register(String path, Supplier<T> item);
+    interface IRegisteredItem<T> {
+        T get();
+    }
+
+    <T extends Item> IRegisteredItem<T> register(String path, Supplier<T> item);
 }
