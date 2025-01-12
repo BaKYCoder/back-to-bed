@@ -22,11 +22,6 @@ public class Returner extends Item {
         this.allowedLevel = allowedLevel;
     }
 
-    public Returner() {
-        super(new Properties().stacksTo(1));
-        this.allowedLevel = Level.END;
-    }
-
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
