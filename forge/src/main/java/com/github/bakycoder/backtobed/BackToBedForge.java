@@ -27,8 +27,8 @@ public class BackToBedForge {
 
     private void manageTabs(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(((RegistryObject<Item>) ItemRegistry.MAGICAL_RETURNER).get());
-            event.accept(((RegistryObject<Item>) ItemRegistry.HELLS_RETURNER).get());
+            event.accept(ItemRegistry.MAGICAL_RETURNER.get());
+            event.accept(ItemRegistry.HELLS_RETURNER.get());
         }
     }
 }

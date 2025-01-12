@@ -1,9 +1,9 @@
 package com.github.bakycoder.backtobed;
 
+import com.github.bakycoder.backtobed.platform.FabricItemRegistrar;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
 
 public class BackToBedFabric implements ModInitializer {
     
@@ -23,8 +23,8 @@ public class BackToBedFabric implements ModInitializer {
 
     public void manageTabs() {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES).register(content -> {
-            content.accept((Item) ItemRegistry.MAGICAL_RETURNER);
-            content.accept((Item) ItemRegistry.HELLS_RETURNER);
+            content.accept(ItemRegistry.MAGICAL_RETURNER.get());
+            content.accept(ItemRegistry.HELLS_RETURNER.get());
         });
     }
 }
