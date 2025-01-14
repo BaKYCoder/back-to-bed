@@ -18,14 +18,12 @@ public class BackToBedNeoForge {
         BackToBed.initCommon();
 
         NeoForgeItemRegistrar.registerToEventBus(eBus);
-
-        eBus.addListener(this::manageTabs);
+        eBus.addListener(this::configureTabEntries);
     }
 
-    private void manageTabs(BuildCreativeModeTabContentsEvent event) {
+    private void configureTabEntries(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(ItemRegistry.MAGICAL_RETURNER.get());
-            event.accept(ItemRegistry.HELLS_RETURNER.get());
+            ItemRegistry.acceptItemsToTab(event);
         }
     }
 }
