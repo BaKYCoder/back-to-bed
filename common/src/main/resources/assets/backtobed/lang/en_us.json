@@ -5,7 +5,7 @@
   "item.backtobed.returner.tooltip.dimensions": "Works in:",
   "_item.backtobed.returner.tooltip.feature": "Feature:",
 
-  "item.backtobed.returner.condition.teleport_for_overworld": "This returner doesn't work in this dimension",
+  "item.backtobed.returner.condition.forbidden_dimension": "This returner doesn't work in this dimension",
   "item.backtobed.returner.condition.no_respawn_point": "No respawn point set, teleportation failed",
   "item.backtobed.returner.condition.no_access_to_bed": "Unable to reach your bed, it may be destroyed",
 
