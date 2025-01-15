@@ -34,7 +34,7 @@ public class LocalizationKeyGenerator {
         return generateItemLocalization(itemId, LocalizationKeys.TOOLTIP.getKey(), lKey.getKey());
     }
 
-    public static String getItemCondition(Item item, String condition) {
-        return generateItemLocalization(item, LocalizationKeys.CONDITION.getKey(), condition);
+    public static String getItemCondition(String itemId, String condition) {
+        return generateItemLocalization(itemId, LocalizationKeys.CONDITION.getKey(), condition);
     }
 }
