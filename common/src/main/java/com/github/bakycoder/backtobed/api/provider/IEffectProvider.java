@@ -17,14 +17,20 @@ public interface IEffectProvider {
     List<SoundEffect> getSounds();
 
     default void applyEffects(ServerLevel rLevel, BlockPos rPosition, ServerPlayer player, Vec3 destination) {
-        for (SoundEffect sound : getSounds()) {
-            rLevel.playSound(null, rPosition, sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
-        }
+        ParticleOptions particles = getParticles();
+        if (particles == null) return;
 
-        (rLevel).sendParticles(
+        rLevel.sendParticles(
                 player, getParticles(), true, destination.x(), destination.y(), destination.z(),
                 85, .85D, .75D, .85D,
                 .005D
         );
+
+        List<SoundEffect> sounds = getSounds();
+        if (sounds == null || sounds.isEmpty()) return;
+
+        for (SoundEffect sound : getSounds()) {
+            rLevel.playSound(null, rPosition, sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
+        }
     }
 }
