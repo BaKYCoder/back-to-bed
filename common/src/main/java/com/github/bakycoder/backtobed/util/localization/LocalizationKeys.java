@@ -1,23 +1,18 @@
 package com.github.bakycoder.backtobed.util.localization;
 
 public enum LocalizationKeys {
-    ITEM("item"),
-    TOOLTIP("tooltip"),
-    DIMENSION("dimension"),
-    CONDITION("condition"),
+    ITEM,
+    TOOLTIP,
+    DIMENSION,
+    CONDITION,
 
-    FUNCTIONALITY("functionality"),
-    COOLDOWN("cooldown"),
-    KEY_HOLD("key_hold"),
-    DIMENSIONS("dimensions");
+    FUNCTIONALITY,
+    COOLDOWN,
+    KEY_HOLD,
+    DIMENSIONS,
+    FEATURE;
 
-    private final String key;
-
-    LocalizationKeys(String key) {
-        this.key = key;
-    }
-
-    public String getKey() {
-        return key;
+    public String getAsKey() {
+        return name().toLowerCase();
     }
 }
