@@ -3,14 +3,14 @@
   "item.backtobed.returner.tooltip.cooldown": "Has [%1%f] sec. cooldown after teleportation.",
   "item.backtobed.returner.tooltip.key_hold": "Hold [%1%s] for details...",
   "item.backtobed.returner.tooltip.dimensions": "Works in:",
-  "_item.backtobed.returner.tooltip.feature": "Feature:",
+  "item.backtobed.returner.tooltip.feature": "Feature:",
 
   "item.backtobed.returner.condition.forbidden_dimension": "This returner doesn't work in this dimension",
   "item.backtobed.returner.condition.no_respawn_point": "No respawn point set, teleportation failed",
   "item.backtobed.returner.condition.no_access_to_bed": "Unable to reach your bed, it may be destroyed",
 
   "item.backtobed.magical_returner": "§bMagical Returner",
-  "_item.backtobed.magical_returner.tooltip.feature": "Includes your mount in the teleport if you’re riding.",
+  "item.backtobed.magical_returner.tooltip.feature": "Includes your mount in the teleport if you’re riding.",
 
   "item.backtobed.hells_returner": "§eHell's Returner",
 
