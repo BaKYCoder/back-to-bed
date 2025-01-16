@@ -1,6 +1,7 @@
 package com.github.bakycoder.backtobed.item.returners;
 
 import com.github.bakycoder.backtobed.api.provider.IEffectProvider;
+import com.github.bakycoder.backtobed.api.provider.IFeatureInjector;
 import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;
@@ -46,11 +47,29 @@ public class Returner extends Item {
     // ! Handle null exception
     private final ResourceKey<Level> allowedDimension;
     private final IEffectProvider effectProvider;
+    private final IFeatureInjector featureInjector;
+
+    public Returner(ResourceKey<Level> allowedLevel, Supplier<IEffectProvider> effectProvider, Supplier<IFeatureInjector> featureInjector) {
+        super(new Properties().stacksTo(1));
+        this.allowedDimension = allowedLevel;
+        this.effectProvider = effectProvider.get();
+        this.featureInjector = featureInjector.get();
+    }
 
     public Returner(ResourceKey<Level> allowedLevel, Supplier<IEffectProvider> effectProvider) {
         super(new Properties().stacksTo(1));
         this.allowedDimension = allowedLevel;
         this.effectProvider = effectProvider.get();
+        this.featureInjector = new IFeatureInjector() {
+            @Override
+            public boolean isEnabled() {
+                return false;
+            }
+
+            @Override
+            public void inject(Level level, LivingEntity entity, ItemStack stack, Vec3 destination) {
+            }
+        };
     }
 
     @Override
@@ -70,6 +89,16 @@ public class Returner extends Item {
             String dimName = allowedDimension.location().getPath();
             key = LocalizationKeyGenerator.getDimension(dimName);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
+
+            if(featureInjector.isEnabled()) {
+                components.add(Component.empty());
+
+                key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.FEATURE);
+                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+
+                key = LocalizationKeyGenerator.getItemTooltip(this , LocalizationKeys.FEATURE);
+                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE));
+            }
         } else {
             key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.KEY_HOLD);
             components.add(LocalizationHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
@@ -135,6 +164,10 @@ public class Returner extends Item {
                 respawnPosition.getY() + 0.6D,
                 respawnPosition.getZ() + 0.5D
         );
+
+        if(featureInjector.isEnabled()) {
+            featureInjector.inject(level, entity, stack, destination);
+        }
 
         player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
 
