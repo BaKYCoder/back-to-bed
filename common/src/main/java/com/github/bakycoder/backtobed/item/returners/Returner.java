@@ -60,16 +60,7 @@ public class Returner extends Item {
         super(new Properties().stacksTo(1));
         this.allowedDimension = allowedLevel;
         this.effectProvider = effectProvider.get();
-        this.featureInjector = new IFeatureInjector() {
-            @Override
-            public boolean isEnabled() {
-                return false;
-            }
-
-            @Override
-            public void inject(Level level, LivingEntity entity, ItemStack stack, Vec3 destination) {
-            }
-        };
+        this.featureInjector = null;
     }
 
     @Override
@@ -90,14 +81,14 @@ public class Returner extends Item {
             key = LocalizationKeyGenerator.getDimension(dimName);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
 
-            if(featureInjector.isEnabled()) {
+            if(featureInjector != null) {
                 components.add(Component.empty());
 
                 key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.FEATURE);
                 components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
                 key = LocalizationKeyGenerator.getItemTooltip(this , LocalizationKeys.FEATURE);
-                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE));
+                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
             }
         } else {
             key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.KEY_HOLD);
@@ -165,11 +156,15 @@ public class Returner extends Item {
                 respawnPosition.getZ() + 0.5D
         );
 
-        if(featureInjector.isEnabled()) {
-            featureInjector.inject(level, entity, stack, destination);
-        }
+        if (featureInjector != null) {
+            featureInjector.inject(player, respawnLevel, stack, destination);
 
-        player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
+            if (!featureInjector.handlesTeleportation()) {
+                player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
+            }
+        } else {
+            player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
+        }
 
         effectProvider.applyEffects(respawnLevel, respawnPosition, player, destination);
 
