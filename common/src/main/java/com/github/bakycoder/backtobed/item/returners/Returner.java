@@ -29,26 +29,12 @@ import java.util.function.Supplier;
 
 public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
-
-    private enum InterruptionReason {
-        FORBIDDEN_DIMENSION,
-        NO_RESPAWN_POINT,
-        NO_ACCESS_TO_BED;
-
-        public String getAsKey() {
-            return name().toLowerCase();
-        }
-    }
-
     private static final int ITEM_DURATION_USAGE_TICKS = 40;
-
     private static final int ITEM_COOLDOWN_TICKS = ITEM_DURATION_USAGE_TICKS;
-
     // ! Handle null exception
     private final ResourceKey<Level> allowedDimension;
     private final IEffectProvider effectProvider;
     private final IFeatureInjector featureInjector;
-
     public Returner(ResourceKey<Level> allowedLevel, Supplier<IEffectProvider> effectProvider, Supplier<IFeatureInjector> featureInjector) {
         super(new Properties().stacksTo(1));
         this.allowedDimension = allowedLevel;
@@ -67,31 +53,31 @@ public class Returner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
-        String key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.FUNCTIONALITY);
+        String key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.FUNCTIONALITY);
         components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
-        if(Screen.hasShiftDown()) {
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.COOLDOWN);
+        if (Screen.hasShiftDown()) {
+            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.COOLDOWN);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.DIMENSIONS);
+            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.DIMENSIONS);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
             String dimName = allowedDimension.location().getPath();
             key = LocalizationKeyGenerator.getDimension(dimName);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
 
-            if(featureInjector != null) {
+            if (featureInjector != null) {
                 components.add(Component.empty());
 
-                key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.FEATURE);
+                key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.FEATURE);
                 components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-                key = LocalizationKeyGenerator.getItemTooltip(this , LocalizationKeys.FEATURE);
+                key = LocalizationKeyGenerator.getItemTooltip(this, LocalizationKeys.FEATURE);
                 components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
             }
         } else {
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID , LocalizationKeys.KEY_HOLD);
+            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.KEY_HOLD);
             components.add(LocalizationHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
@@ -114,7 +100,7 @@ public class Returner extends Item {
 
     private void interruptItemUsage(InterruptionReason reason, ServerPlayer player) {
         if (reason != null) {
-            String key = LocalizationKeyGenerator.getItemCondition(CLASS_NAME_AS_ID , reason.getAsKey());
+            String key = LocalizationKeyGenerator.getItemCondition(CLASS_NAME_AS_ID, reason.getAsKey());
             player.displayClientMessage(Component.translatable(key), true);
         }
 
@@ -128,7 +114,7 @@ public class Returner extends Item {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide()) return;
 
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
-        if (usageDuration  < ITEM_DURATION_USAGE_TICKS) return;
+        if (usageDuration < ITEM_DURATION_USAGE_TICKS) return;
 
         if (player.getCommandSenderWorld().dimension() != allowedDimension) {
             interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
@@ -170,5 +156,15 @@ public class Returner extends Item {
 
         player.stopUsingItem();
         player.getCooldowns().addCooldown(stack.getItem(), ITEM_COOLDOWN_TICKS);
+    }
+
+    private enum InterruptionReason {
+        FORBIDDEN_DIMENSION,
+        NO_RESPAWN_POINT,
+        NO_ACCESS_TO_BED;
+
+        public String getAsKey() {
+            return name().toLowerCase();
+        }
     }
 }
