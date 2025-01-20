@@ -2,31 +2,40 @@ package com.github.bakycoder.backtobed.item.returners.injections;
 
 import com.github.bakycoder.backtobed.api.provider.IFeatureInjector;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Collections;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MountFeatureInjector implements IFeatureInjector {
+    private final static ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
+
     @Override
-    public boolean isEnabled() {
-        return true;
+    public boolean handlesTeleportation() {
+        return false;
     }
 
     @Override
-    public void inject(Level level, LivingEntity entity, ItemStack stack, Vec3 destination) {
-        ServerPlayer player = (ServerPlayer) entity;
-
-        if (player.getVehicle() != null) {
-            Entity vehicle = player.getVehicle();
-            player.stopRiding();
-
-            vehicle.teleportTo(destination.x(), destination.y(), destination.z());
-
-            // TODO: Resolve problem, when entity is not rendered
+    public void inject(ServerPlayer player, ServerLevel respawn, ItemStack stack, Vec3 destination) {
+        Entity vehicle = player.getVehicle();
+        if (vehicle != null) {
+            EXECUTOR.schedule(() -> {
+                vehicle.teleportTo(
+                        respawn,
+                        destination.x(),
+                        destination.y(),
+                        destination.z(),
+                        Collections.emptySet(),
+                        vehicle.getYRot(),
+                        vehicle.getXRot()
+                );
+            }, 120, TimeUnit.MILLISECONDS);
         }
     }
 }
