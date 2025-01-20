@@ -1,7 +1,7 @@
 package com.github.bakycoder.backtobed.item.returner.effects;
 
 import com.github.bakycoder.backtobed.api.SoundEffect;
-import com.github.bakycoder.backtobed.api.provider.IEffectProvider;
+import com.github.bakycoder.backtobed.api.IEffectProvider;
 import net.minecraft.core.particles.DustColorTransitionOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.sounds.SoundEvents;

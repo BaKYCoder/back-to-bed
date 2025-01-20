@@ -1,6 +1,6 @@
 package com.github.bakycoder.backtobed.item.returner.injections;
 
-import com.github.bakycoder.backtobed.api.provider.IFeatureInjector;
+import com.github.bakycoder.backtobed.api.IFeatureInjector;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

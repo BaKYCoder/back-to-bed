@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.api.provider;
+package com.github.bakycoder.backtobed.api;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;

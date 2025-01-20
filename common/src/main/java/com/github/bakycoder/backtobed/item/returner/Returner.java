@@ -1,7 +1,7 @@
 package com.github.bakycoder.backtobed.item.returner;
 
-import com.github.bakycoder.backtobed.api.provider.IEffectProvider;
-import com.github.bakycoder.backtobed.api.provider.IFeatureInjector;
+import com.github.bakycoder.backtobed.api.IEffectProvider;
+import com.github.bakycoder.backtobed.api.IFeatureInjector;
 import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;

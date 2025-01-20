@@ -1,6 +1,4 @@
-package com.github.bakycoder.backtobed.api.provider;
-
-import com.github.bakycoder.backtobed.api.SoundEffect;
+package com.github.bakycoder.backtobed.api;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
