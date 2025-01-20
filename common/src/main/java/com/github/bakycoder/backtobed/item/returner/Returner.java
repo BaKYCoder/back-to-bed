@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.item.returners;
+package com.github.bakycoder.backtobed.item.returner;
 
 import com.github.bakycoder.backtobed.api.provider.IEffectProvider;
 import com.github.bakycoder.backtobed.api.provider.IFeatureInjector;
@@ -31,7 +31,6 @@ public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
     private static final int ITEM_DURATION_USAGE_TICKS = 40;
     private static final int ITEM_COOLDOWN_TICKS = ITEM_DURATION_USAGE_TICKS;
-    // ! Handle null exception
     private final ResourceKey<Level> allowedDimension;
     private final IEffectProvider effectProvider;
     private final IFeatureInjector featureInjector;
