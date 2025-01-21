@@ -2,6 +2,7 @@ package com.github.bakycoder.backtobed.item.returner;
 
 import com.github.bakycoder.backtobed.api.IEffectProvider;
 import com.github.bakycoder.backtobed.api.IFeatureInjector;
+import com.github.bakycoder.backtobed.platform.Services;
 import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;
@@ -29,8 +30,6 @@ import java.util.function.Supplier;
 
 public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
-    private static final int ITEM_DURATION_USAGE_TICKS = 40;
-    private static final int ITEM_COOLDOWN_TICKS = ITEM_DURATION_USAGE_TICKS;
     private final ResourceKey<Level> allowedDimension;
     private final IEffectProvider effectProvider;
     private final IFeatureInjector featureInjector;
@@ -113,7 +112,7 @@ public class Returner extends Item {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide()) return;
 
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
-        if (usageDuration < ITEM_DURATION_USAGE_TICKS) return;
+        if (usageDuration < Services.getModConfig().getDefaultReturnerDurationUsage()) return;
 
         if (player.getCommandSenderWorld().dimension() != allowedDimension) {
             interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
@@ -154,7 +153,7 @@ public class Returner extends Item {
         effectProvider.applyEffects(respawnLevel, player, destination);
 
         player.stopUsingItem();
-        player.getCooldowns().addCooldown(stack.getItem(), ITEM_COOLDOWN_TICKS);
+        player.getCooldowns().addCooldown(stack.getItem(), Services.getModConfig().getDefaultReturnerCooldown());
     }
 
     private enum InterruptionReason {
