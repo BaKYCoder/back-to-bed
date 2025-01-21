@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.item.returner.injections;
+package com.github.bakycoder.backtobed.item.returner.features;
 
 import com.github.bakycoder.backtobed.api.IFeatureInjector;
 
