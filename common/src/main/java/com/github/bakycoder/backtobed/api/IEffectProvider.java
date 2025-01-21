@@ -1,5 +1,6 @@
 package com.github.bakycoder.backtobed.api;
 
+import com.jcraft.jorbis.Block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.server.level.ServerLevel;
@@ -14,11 +15,11 @@ public interface IEffectProvider {
 
     List<SoundEffect> getSounds();
 
-    default void applyEffects(ServerLevel rLevel, BlockPos rPosition, ServerPlayer player, Vec3 destination) {
+    default void applyEffects(ServerLevel respawnLevel, ServerPlayer player, Vec3 destination) {
         ParticleOptions particles = getParticles();
         if (particles == null) return;
 
-        rLevel.sendParticles(
+        respawnLevel.sendParticles(
                 player, getParticles(), true, destination.x(), destination.y(), destination.z(),
                 85, .85D, .75D, .85D,
                 .005D
@@ -27,8 +28,8 @@ public interface IEffectProvider {
         List<SoundEffect> sounds = getSounds();
         if (sounds == null || sounds.isEmpty()) return;
 
-        for (SoundEffect sound : getSounds()) {
-            rLevel.playSound(null, rPosition, sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
+        for (SoundEffect sound : sounds) {
+            respawnLevel.playSound(null, BlockPos.containing(destination), sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
         }
     }
 }

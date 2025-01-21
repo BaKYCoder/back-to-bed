@@ -151,7 +151,7 @@ public class Returner extends Item {
             player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
         }
 
-        effectProvider.applyEffects(respawnLevel, respawnPosition, player, destination);
+        effectProvider.applyEffects(respawnLevel, player, destination);
 
         player.stopUsingItem();
         player.getCooldowns().addCooldown(stack.getItem(), ITEM_COOLDOWN_TICKS);
