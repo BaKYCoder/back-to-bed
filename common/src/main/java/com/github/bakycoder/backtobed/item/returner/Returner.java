@@ -59,7 +59,7 @@ public class Returner extends Item {
             key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.COOLDOWN);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.DIMENSIONS);
+            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.AVAILABILITY);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
             String dimName = allowedDimension.location().getPath();

@@ -9,7 +9,7 @@ public enum LocalizationKeys {
     FUNCTIONALITY,
     COOLDOWN,
     KEY_HOLD,
-    DIMENSIONS,
+    AVAILABILITY,
     FEATURE;
 
     public String getAsKey() {
