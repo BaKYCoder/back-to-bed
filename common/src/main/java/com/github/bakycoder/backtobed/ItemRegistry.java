@@ -3,7 +3,7 @@ package com.github.bakycoder.backtobed;
 import com.github.bakycoder.backtobed.item.returner.effects.HellsEffectProvider;
 import com.github.bakycoder.backtobed.item.returner.effects.MagicalEffectProvider;
 import com.github.bakycoder.backtobed.item.returner.Returner;
-import com.github.bakycoder.backtobed.item.returner.injections.MountFeatureInjector;
+import com.github.bakycoder.backtobed.item.returner.features.MountFeatureInjector;
 import com.github.bakycoder.backtobed.platform.Services;
 import com.github.bakycoder.backtobed.platform.services.IItemRegistrar;
 import net.minecraft.world.item.CreativeModeTab;
