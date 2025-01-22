@@ -112,7 +112,7 @@ public class Returner extends Item {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide()) return;
 
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
-        if (usageDuration < Services.getModConfig().getDefaultReturnerDurationUsage()) return;
+        if (usageDuration < Services.getModConfig().getSpecificReturnerDurationUsage(this)) return;
 
         if (player.getCommandSenderWorld().dimension() != allowedDimension) {
             interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
@@ -153,7 +153,7 @@ public class Returner extends Item {
         effectProvider.applyEffects(respawnLevel, player, destination);
 
         player.stopUsingItem();
-        player.getCooldowns().addCooldown(stack.getItem(), Services.getModConfig().getDefaultReturnerCooldown());
+        player.getCooldowns().addCooldown(stack.getItem(), Services.getModConfig().getSpecificReturnerCooldown(this));
     }
 
     private enum InterruptionReason {
