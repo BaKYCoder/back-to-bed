@@ -1,11 +1,15 @@
 package com.github.bakycoder.backtobed.platform;
 
 import com.github.bakycoder.backtobed.BackToBed;
+import com.github.bakycoder.backtobed.item.returner.Returner;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 @EventBusSubscriber(modid = BackToBed.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NeoForgeModConfig implements IModConfig {
@@ -32,6 +36,18 @@ public class NeoForgeModConfig implements IModConfig {
     @Override
     public int getDefaultReturnerCooldown() {
         return defaultReturnerCooldown;
+    }
+
+    @Override
+    public int getSpecificReturnerDurationUsage(Returner returner) {
+        String id = BuiltInRegistries.ITEM.getKey(returner).getPath();
+        return SPEC.getIntOrElse(List.of(id, "duration_usage"), getDefaultReturnerDurationUsage());
+    }
+
+    @Override
+    public int getSpecificReturnerCooldown(Returner returner) {
+        String id = BuiltInRegistries.ITEM.getKey(returner).getPath();
+        return SPEC.getIntOrElse(List.of(id, "cooldown"), getDefaultReturnerCooldown());
     }
 
     @SubscribeEvent
