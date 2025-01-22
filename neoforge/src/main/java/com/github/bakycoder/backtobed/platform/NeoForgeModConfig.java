@@ -13,11 +13,11 @@ public class NeoForgeModConfig implements IModConfig {
 
     private static final ModConfigSpec.ConfigValue<Integer> DEFAULT_RETURNER_DURATION_USAGE = BUILDER
             .comment("Default duration usage of all returners (in ticks)")
-            .defineInRange("default_returner_duration_usage", 60, 0, 72000);
+            .defineInRange(List.of("default", "returner_duration_usage"), 60, 0, 72000);
 
     private static final ModConfigSpec.ConfigValue<Integer> DEFAULT_RETURNER_COOLDOWN = BUILDER
             .comment("Default cooldown duration for all returners after usage (in ticks)")
-            .defineInRange("default_returner_cooldown", 50, 0, 72000);
+            .defineInRange(List.of("default", "returner_cooldown"), 50, 0, 72000);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
