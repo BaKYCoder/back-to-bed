@@ -3,6 +3,7 @@ package com.github.bakycoder.backtobed.item.returner;
 import com.github.bakycoder.backtobed.api.IEffectProvider;
 import com.github.bakycoder.backtobed.api.IFeatureInjector;
 import com.github.bakycoder.backtobed.platform.Services;
+import com.github.bakycoder.backtobed.platform.services.IModConfig;
 import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
 import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;
@@ -30,21 +31,25 @@ import java.util.function.Supplier;
 
 public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
-    private final ResourceKey<Level> allowedDimension;
-    private final IEffectProvider effectProvider;
-    private final IFeatureInjector featureInjector;
-    public Returner(ResourceKey<Level> allowedLevel, Supplier<IEffectProvider> effectProvider, Supplier<IFeatureInjector> featureInjector) {
-        super(new Properties().stacksTo(1));
-        this.allowedDimension = allowedLevel;
-        this.effectProvider = effectProvider.get();
-        this.featureInjector = featureInjector.get();
+    private static final IModConfig MOD_CONFIG = Services.getModConfig();
+
+    private final ResourceKey<Level> ALLOWED_LEVEL;
+    private final IEffectProvider EFFECT_PROVIDER;
+    private final IFeatureInjector FEATURE_INJECTOR;
+
+    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+        super(new Properties()
+                .stacksTo(1)
+                .durability(MOD_CONFIG.getReturnerDurability())
+        );
+
+        this.ALLOWED_LEVEL = level;
+        this.EFFECT_PROVIDER = (provider != null) ? provider.get() : null;
+        this.FEATURE_INJECTOR = (injector != null) ? injector.get() : null;
     }
 
-    public Returner(ResourceKey<Level> allowedLevel, Supplier<IEffectProvider> effectProvider) {
-        super(new Properties().stacksTo(1));
-        this.allowedDimension = allowedLevel;
-        this.effectProvider = effectProvider.get();
-        this.featureInjector = null;
+    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
+        this(level, provider, null);
     }
 
     @Override
@@ -61,11 +66,11 @@ public class Returner extends Item {
             key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.AVAILABILITY);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-            String dimName = allowedDimension.location().getPath();
-            key = LocalizationKeyGenerator.getDimension(dimName);
+            String levelKey = ALLOWED_LEVEL.location().getPath();
+            key = LocalizationKeyGenerator.getDimension(levelKey);
             components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
 
-            if (featureInjector != null) {
+            if (FEATURE_INJECTOR != null) {
                 components.add(Component.empty());
 
                 key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.FEATURE);
@@ -112,9 +117,9 @@ public class Returner extends Item {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide()) return;
 
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
-        if (usageDuration < Services.getModConfig().getSpecificReturnerDurationUsage(this)) return;
+        if (usageDuration < MOD_CONFIG.getReturnerDurationUsage()) return;
 
-        if (player.getCommandSenderWorld().dimension() != allowedDimension) {
+        if (player.getCommandSenderWorld().dimension() != ALLOWED_LEVEL) {
             interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
             return;
         }
@@ -140,20 +145,18 @@ public class Returner extends Item {
                 respawnPosition.getZ() + 0.5D
         );
 
-        if (featureInjector != null) {
-            featureInjector.inject(player, respawnLevel, stack, destination);
+        if (FEATURE_INJECTOR != null) {
+            FEATURE_INJECTOR.inject(player, respawnLevel, stack, destination);
+        }
 
-            if (!featureInjector.handlesTeleportation()) {
-                player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
-            }
-        } else {
+        if (FEATURE_INJECTOR == null || !FEATURE_INJECTOR.handlesTeleportation()) {
             player.teleportTo(respawnLevel, destination.x(), destination.y(), destination.z(), player.getYRot(), player.getXRot());
         }
 
-        effectProvider.applyEffects(respawnLevel, player, destination);
+        EFFECT_PROVIDER.applyEffects(respawnLevel, player, destination);
 
         player.stopUsingItem();
-        player.getCooldowns().addCooldown(stack.getItem(), Services.getModConfig().getSpecificReturnerCooldown(this));
+        player.getCooldowns().addCooldown(stack.getItem(), MOD_CONFIG.getReturnerCooldown());
     }
 
     private enum InterruptionReason {
