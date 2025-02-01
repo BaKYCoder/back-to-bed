@@ -2,3 +2,7 @@
 
 - Fixed an issue where the Magic Returner failed to display the condition for overworld teleportation.
 - Now, if teleportation to the spawn point is not successful, the cooldown will not be applied.
+- Added new item: Hell's Returner (allows teleportation across the Nether)
+- Improved tooltip description for mod items
+- Added configuration for NeoForge to customize returners behavior
+- Returners are now have durability (configurable)
