@@ -1,59 +1,49 @@
 package com.github.bakycoder.backtobed.platform;
 
 import com.github.bakycoder.backtobed.BackToBed;
-import com.github.bakycoder.backtobed.item.returner.Returner;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
-import net.minecraft.core.registries.BuiltInRegistries;
+
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-import java.util.List;
-
 @EventBusSubscriber(modid = BackToBed.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NeoForgeModConfig implements IModConfig {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.ConfigValue<Integer> DEFAULT_RETURNER_DURATION_USAGE = BUILDER
-            .comment("Default duration usage of all returners (in ticks)")
-            .defineInRange(List.of("default", "returner_duration_usage"), 60, 0, 72000);
+    private static final ModConfigSpec.ConfigValue<Integer> RETURNER_DURATION_USAGE = BUILDER
+            .comment("Duration usage of all returners (in ticks)")
+            .defineInRange("returner_duration_usage", 60, 0, 72000);
 
-    private static final ModConfigSpec.ConfigValue<Integer> DEFAULT_RETURNER_COOLDOWN = BUILDER
-            .comment("Default cooldown duration for all returners after usage (in ticks)")
-            .defineInRange(List.of("default", "returner_cooldown"), 50, 0, 72000);
+    private static final ModConfigSpec.ConfigValue<Integer> RETURNER_COOLDOWN = BUILDER
+            .comment("Cooldown duration for all returners after usage (in ticks)")
+            .defineInRange("returner_cooldown", 50, 0, 72000);
 
     public static final ModConfigSpec SPEC = BUILDER.build();
 
-    private static int defaultReturnerDurationUsage;
-    private static int defaultReturnerCooldown;
+    private static int returnerDurationUsage;
+    private static int returnerCooldown;
 
     @Override
-    public int getDefaultReturnerDurationUsage() {
-        return defaultReturnerDurationUsage;
+    public int getReturnerDurationUsage() {
+        return returnerDurationUsage;
     }
 
     @Override
-    public int getDefaultReturnerCooldown() {
-        return defaultReturnerCooldown;
+    public int getReturnerCooldown() {
+        return returnerCooldown;
     }
 
     @Override
-    public int getSpecificReturnerDurationUsage(Returner returner) {
-        String id = BuiltInRegistries.ITEM.getKey(returner).getPath();
-        return SPEC.getIntOrElse(List.of(id, "duration_usage"), getDefaultReturnerDurationUsage());
-    }
-
-    @Override
-    public int getSpecificReturnerCooldown(Returner returner) {
-        String id = BuiltInRegistries.ITEM.getKey(returner).getPath();
-        return SPEC.getIntOrElse(List.of(id, "cooldown"), getDefaultReturnerCooldown());
+    public int getReturnerDurability() {
+        return 20;
     }
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        defaultReturnerDurationUsage = DEFAULT_RETURNER_DURATION_USAGE.get();
-        defaultReturnerCooldown = DEFAULT_RETURNER_COOLDOWN.get();
+        returnerDurationUsage = RETURNER_DURATION_USAGE.get();
+        returnerCooldown = RETURNER_COOLDOWN.get();
     }
 }
