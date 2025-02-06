@@ -35,11 +35,6 @@ public class NeoForgeModConfig implements IModConfig {
         return returnerCooldown;
     }
 
-    @Override
-    public int getReturnerDurability() {
-        return 20;
-    }
-
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
