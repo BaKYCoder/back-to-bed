@@ -103,10 +103,8 @@ public class Returner extends Item {
     }
 
     private void interruptItemUsage(InterruptionReason reason, ServerPlayer player) {
-        if (reason != null) {
-            String key = LocalizationKeyGenerator.getItemCondition(CLASS_NAME_AS_ID, reason.getAsKey());
-            player.displayClientMessage(Component.translatable(key), true);
-        }
+        String key = LocalizationKeyGenerator.getItemCondition(CLASS_NAME_AS_ID, reason.getAsKey());
+        player.displayClientMessage(Component.translatable(key), true);
 
         player.stopUsingItem();
     }
