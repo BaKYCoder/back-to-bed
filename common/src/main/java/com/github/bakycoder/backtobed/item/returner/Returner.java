@@ -37,15 +37,16 @@ public class Returner extends Item {
     private final IEffectProvider EFFECT_PROVIDER;
     private final IFeatureInjector FEATURE_INJECTOR;
 
-    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
-        super(new Properties()
-                .stacksTo(1)
-                .durability(MOD_CONFIG.getReturnerDurability())
-        );
+    public Returner(Properties properties, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+        super(properties);
 
         this.ALLOWED_LEVEL = level;
         this.EFFECT_PROVIDER = (provider != null) ? provider.get() : null;
         this.FEATURE_INJECTOR = (injector != null) ? injector.get() : null;
+    }
+
+    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+        this(new Item.Properties().stacksTo(1).durability(20), level, provider, injector);
     }
 
     public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
