@@ -158,6 +158,11 @@ public class Returner extends Item {
         player.getCooldowns().addCooldown(stack.getItem(), MOD_CONFIG.getReturnerCooldown());
     }
 
+    @Override
+    public boolean isValidRepairItem(ItemStack pStack, ItemStack pRepairCandidate) {
+        return pRepairCandidate.is(Items.AMETHYST_SHARD);
+    }
+
     private enum InterruptionReason {
         FORBIDDEN_DIMENSION,
         NO_RESPAWN_POINT,
