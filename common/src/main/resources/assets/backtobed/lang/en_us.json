@@ -1,6 +1,6 @@
 {
-  "item.backtobed.returner.tooltip.functionality": "Hold right-click for [%1%f] sec. to teleport to your bed.",
-  "item.backtobed.returner.tooltip.cooldown": "Has [%1%f] sec. cooldown after teleportation.",
+  "item.backtobed.returner.tooltip.functionality": "Hold right-click for %1%f sec. to teleport to your bed.",
+  "item.backtobed.returner.tooltip.cooldown": "Has %1%f sec. cooldown after teleportation.",
   "item.backtobed.returner.tooltip.key_hold": "Hold [%1%s] for details...",
   "item.backtobed.returner.tooltip.availability": "Works in:",
   "item.backtobed.returner.tooltip.feature": "Feature:",
