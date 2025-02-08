@@ -43,7 +43,7 @@ public class Returner extends Item {
     }
 
     public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
-        this(new Item.Properties().stacksTo(1).durability(20), level, provider, injector);
+        this(new Item.Properties().stacksTo(1), level, provider, injector);
     }
 
     public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
@@ -90,10 +90,6 @@ public class Returner extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        if(player.getItemInHand(usedHand).getMaxDamage() - player.getItemInHand(usedHand).getDamageValue() <= 0) {
-            return InteractionResultHolder.pass(player.getItemInHand(usedHand));
-        }
-
         player.startUsingItem(usedHand);
         return InteractionResultHolder.consume(player.getItemInHand(usedHand));
     }
@@ -155,15 +151,8 @@ public class Returner extends Item {
 
         EFFECT_PROVIDER.applyEffects(respawnLevel, player, destination);
 
-        stack.setDamageValue(stack.getDamageValue() + 1);
-
         player.stopUsingItem();
         player.getCooldowns().addCooldown(stack.getItem(), MOD_CONFIG.getReturnerCooldown());
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack pStack, ItemStack pRepairCandidate) {
-        return pRepairCandidate.is(Items.AMETHYST_SHARD);
     }
 
     private enum InterruptionReason {
