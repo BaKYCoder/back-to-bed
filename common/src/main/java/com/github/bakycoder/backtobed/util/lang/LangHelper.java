@@ -1,4 +1,4 @@
-package com.github.bakycoder.backtobed.util.localization;
+package com.github.bakycoder.backtobed.util.lang;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
@@ -8,7 +8,7 @@ import net.minecraft.network.chat.MutableComponent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocalizationHelper {
+public class LangHelper {
     private static final int MAX_TEXT_LINE_LENGTH = 31;
 
     public static List<Component> getFormatted(String key, ChatFormatting style, boolean startWithSpace, boolean newLineAtEnd) {

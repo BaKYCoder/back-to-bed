@@ -1,6 +1,6 @@
-package com.github.bakycoder.backtobed.util.localization;
+package com.github.bakycoder.backtobed.util.lang;
 
-public enum LocalizationKeys {
+public enum LangKeys {
     ITEM,
     TOOLTIP,
     DIMENSION,

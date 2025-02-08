@@ -4,9 +4,9 @@ import com.github.bakycoder.backtobed.api.IEffectProvider;
 import com.github.bakycoder.backtobed.api.IFeatureInjector;
 import com.github.bakycoder.backtobed.platform.Services;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
-import com.github.bakycoder.backtobed.util.localization.LocalizationHelper;
-import com.github.bakycoder.backtobed.util.localization.LocalizationKeyGenerator;
-import com.github.bakycoder.backtobed.util.localization.LocalizationKeys;
+import com.github.bakycoder.backtobed.util.lang.LangHelper;
+import com.github.bakycoder.backtobed.util.lang.LangKeyGenerator;
+import com.github.bakycoder.backtobed.util.lang.LangKeys;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -61,32 +61,32 @@ public class Returner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
-        String key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.FUNCTIONALITY);
-        components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+        String key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FUNCTIONALITY);
+        components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
         if (Screen.hasShiftDown()) {
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.COOLDOWN);
-            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.COOLDOWN);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
 
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.AVAILABILITY);
-            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.AVAILABILITY);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
             String levelKey = ALLOWED_LEVEL.location().getPath();
-            key = LocalizationKeyGenerator.getDimension(levelKey);
-            components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
+            key = LangKeyGenerator.getDimension(levelKey);
+            components.addAll(LangHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
 
             if (FEATURE_INJECTOR != null) {
                 components.add(Component.empty());
 
-                key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.FEATURE);
-                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+                key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FEATURE);
+                components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
 
-                key = LocalizationKeyGenerator.getItemTooltip(this, LocalizationKeys.FEATURE);
-                components.addAll(LocalizationHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
+                key = LangKeyGenerator.getItemTooltip(this, LangKeys.FEATURE);
+                components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
             }
         } else {
-            key = LocalizationKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LocalizationKeys.KEY_HOLD);
-            components.add(LocalizationHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
+            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.KEY_HOLD);
+            components.add(LangHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
 
@@ -107,7 +107,7 @@ public class Returner extends Item {
     }
 
     private void interruptItemUsage(InterruptionReason reason, ServerPlayer player) {
-        String key = LocalizationKeyGenerator.getItemCondition(CLASS_NAME_AS_ID, reason.getAsKey());
+        String key = LangKeyGenerator.getItemCondition(CLASS_NAME_AS_ID, reason.getAsKey());
         player.displayClientMessage(Component.translatable(key), true);
 
         player.stopUsingItem();
