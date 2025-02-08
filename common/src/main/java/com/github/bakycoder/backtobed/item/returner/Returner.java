@@ -61,32 +61,36 @@ public class Returner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
+        if(!MOD_CONFIG.showReturnerTooltip(this)) return;
+
+        float durationUsage = (float) MOD_CONFIG.getReturnerDurationUsage(this) / 20;
+
         String key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FUNCTIONALITY);
-        components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+        components.addAll(LangHelper.format(key, String.format("%.1f", durationUsage), ChatFormatting.GRAY, ChatFormatting.WHITE));
 
         if (Screen.hasShiftDown()) {
+            float cooldown = (float) MOD_CONFIG.getReturnerCooldown(this) / 20;
+
             key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.COOLDOWN);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.GRAY, true, true));
+            components.addAll(LangHelper.format(key, String.format("%.1f", cooldown), ChatFormatting.GRAY, ChatFormatting.WHITE));
 
             key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.AVAILABILITY);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+            components.addAll(LangHelper.format(key, ChatFormatting.DARK_GRAY));
 
             String levelKey = ALLOWED_LEVEL.location().getPath();
             key = LangKeyGenerator.getDimension(levelKey);
-            components.addAll(LangHelper.getFormatted(key, ChatFormatting.YELLOW, true, false));
+            components.addAll(LangHelper.format(key, ChatFormatting.YELLOW));
 
             if (FEATURE_INJECTOR != null) {
-                components.add(Component.empty());
-
                 key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FEATURE);
-                components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_GRAY));
+                components.addAll(LangHelper.format(key, ChatFormatting.DARK_GRAY));
 
                 key = LangKeyGenerator.getItemTooltip(this, LangKeys.FEATURE);
-                components.addAll(LangHelper.getFormatted(key, ChatFormatting.DARK_PURPLE, true, false));
+                components.addAll(LangHelper.format(key, ChatFormatting.DARK_PURPLE));
             }
         } else {
             key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.KEY_HOLD);
-            components.add(LangHelper.getHighlighted(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
+            components.addAll(LangHelper.format(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
         }
     }
 
@@ -120,7 +124,7 @@ public class Returner extends Item {
         if (!(entity instanceof ServerPlayer player) || level.isClientSide()) return;
 
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
-        if (usageDuration < MOD_CONFIG.getReturnerDurationUsage()) return;
+        if (usageDuration < MOD_CONFIG.getReturnerDurationUsage(this)) return;
 
         if (player.getCommandSenderWorld().dimension() != ALLOWED_LEVEL) {
             interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
@@ -159,7 +163,7 @@ public class Returner extends Item {
         EFFECT_PROVIDER.applyEffects(respawnLevel, player, destination);
 
         player.stopUsingItem();
-        player.getCooldowns().addCooldown(stack.getItem(), MOD_CONFIG.getReturnerCooldown());
+        player.getCooldowns().addCooldown(stack.getItem(), MOD_CONFIG.getReturnerCooldown(this));
     }
 
     private enum InterruptionReason {
