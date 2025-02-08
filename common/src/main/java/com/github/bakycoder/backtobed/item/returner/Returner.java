@@ -30,24 +30,31 @@ public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
     private static final IModConfig MOD_CONFIG = Services.getModConfig();
 
+    private final ChatFormatting ITEM_COLOR_NAME;
     private final ResourceKey<Level> ALLOWED_LEVEL;
     private final IEffectProvider EFFECT_PROVIDER;
     private final IFeatureInjector FEATURE_INJECTOR;
 
-    public Returner(Properties properties, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+    public Returner(Properties properties, ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
         super(properties);
 
+        this.ITEM_COLOR_NAME = itemColorName;
         this.ALLOWED_LEVEL = level;
         this.EFFECT_PROVIDER = (provider != null) ? provider.get() : null;
         this.FEATURE_INJECTOR = (injector != null) ? injector.get() : null;
     }
 
-    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
-        this(new Item.Properties().stacksTo(1), level, provider, injector);
+    public Returner(ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+        this(new Item.Properties().stacksTo(1), itemColorName, level, provider, injector);
     }
 
-    public Returner(ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
-        this(level, provider, null);
+    public Returner(ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
+        this(itemColorName, level, provider, null);
+    }
+
+    @Override
+    public Component getName(ItemStack pStack) {
+        return Component.translatable(this.getDescriptionId(pStack)).withStyle(this.ITEM_COLOR_NAME);
     }
 
     @Override
