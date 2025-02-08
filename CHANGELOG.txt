@@ -5,4 +5,3 @@
 - Added new item: Hell's Returner (allows teleportation across the Nether)
 - Improved tooltip description for mod items
 - Added configuration for NeoForge to customize returners behavior
-- Returners are now have durability (configurable)
