@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_amethyst_shard": {
+    "has_blaze_rod": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:amethyst_shard"
+            "items": "minecraft:blaze_rod"
           }
         ]
       },
@@ -20,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_amethyst_shard",
+      "has_blaze_rod",
       "has_the_recipe"
     ]
   ],
