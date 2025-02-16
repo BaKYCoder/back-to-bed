@@ -10,7 +10,7 @@ import java.util.List;
 public class LangHelper {
     private static final int MAX_TEXT_LINE_LENGTH = 31;
 
-    public static List<Component> split(String text, ChatFormatting format) {
+    public static List<Component> split(String text, ChatFormatting format, boolean spacing) {
         List<Component> lines = new ArrayList<>();
 
         String[] words = text.split(" ");
@@ -18,8 +18,10 @@ public class LangHelper {
 
         for (String word : words) {
             if (currLine.length() + word.length() + 1 <= MAX_TEXT_LINE_LENGTH) {
-                if (!currLine.isEmpty())
+                if (!currLine.isEmpty() || spacing) {
                     currLine.append(" ");
+                    spacing = false;
+                }
                 currLine.append(word);
             } else {
                 lines.add(Component.literal(currLine.toString()).withStyle(format));
@@ -34,15 +36,15 @@ public class LangHelper {
         return lines;
     }
 
-    public static List<Component> format(String key, ChatFormatting format) {
+    public static List<Component> format(String key, ChatFormatting format, boolean spacing) {
         String text = I18n.get(key);
-        return split(text, format);
+        return split(text, format, spacing);
     }
 
-    public static List<Component> format(String key, String arg, ChatFormatting keyFormat, ChatFormatting argFormat) {
+    public static List<Component> format(String key, String arg, ChatFormatting keyFormat, ChatFormatting argFormat, boolean spacing) {
         String text = String.format(I18n.get(key), arg);
 
-        List<Component> splits = split(text, keyFormat);
+        List<Component> splits = split(text, keyFormat, spacing);
 
         for(int i = 0; i < splits.size(); i++) {
             String split = splits.get(i).getString();
