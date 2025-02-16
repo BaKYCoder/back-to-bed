@@ -15,11 +15,11 @@ public interface IEffectProvider {
 
     List<SoundEffect> getSounds();
 
-    default void applyEffects(ServerLevel respawnLevel, ServerPlayer player, Vec3 destination) {
+    default void applyEffects(ServerLevel respawn, ServerPlayer player, Vec3 destination) {
         ParticleOptions particles = getParticles();
         if (particles == null) return;
 
-        respawnLevel.sendParticles(
+        respawn.sendParticles(
                 player, getParticles(), true, destination.x(), destination.y(), destination.z(),
                 85, .85D, .75D, .85D,
                 .005D
@@ -29,7 +29,7 @@ public interface IEffectProvider {
         if (sounds == null || sounds.isEmpty()) return;
 
         for (SoundEffect sound : sounds) {
-            respawnLevel.playSound(null, BlockPos.containing(destination), sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
+            respawn.playSound(null, BlockPos.containing(destination), sound.event(), SoundSource.PLAYERS, sound.volume(), sound.pitch());
         }
     }
 }
