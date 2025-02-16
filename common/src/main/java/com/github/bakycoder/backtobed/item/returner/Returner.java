@@ -4,7 +4,7 @@ import com.github.bakycoder.backtobed.api.IEffectProvider;
 import com.github.bakycoder.backtobed.api.IFeatureInjector;
 import com.github.bakycoder.backtobed.platform.Services;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
-import com.github.bakycoder.backtobed.util.lang.LangHelper;
+import com.github.bakycoder.backtobed.util.TooltipBuilder;
 import com.github.bakycoder.backtobed.util.lang.LangKeyGenerator;
 import com.github.bakycoder.backtobed.util.lang.LangKeys;
 import net.minecraft.ChatFormatting;
@@ -52,6 +52,10 @@ public class Returner extends Item {
         this(itemColorName, level, provider, null);
     }
 
+    private static String resolveLangKey(LangKeys key) {
+        return LangKeys.LANG_KEY_CACHE.computeIfAbsent(key, lk -> LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, lk));
+    }
+
     @Override
     public Component getName(ItemStack pStack) {
         return Component.translatable(this.getDescriptionId(pStack)).withStyle(this.ITEM_COLOR_NAME);
@@ -61,37 +65,38 @@ public class Returner extends Item {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         super.appendHoverText(stack, context, components, flag);
 
-        if(!MOD_CONFIG.showReturnerTooltip(this)) return;
+        if (!MOD_CONFIG.showReturnerTooltip(this)) return;
 
-        float durationUsage = (float) MOD_CONFIG.getReturnerDurationUsage(this) / 20;
+        TooltipBuilder builder = new TooltipBuilder();
+        float durationUsage = MOD_CONFIG.getReturnerDurationUsage(this) / 20f;
 
-        String key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FUNCTIONALITY);
-        components.addAll(LangHelper.format(key, String.format("%.1f", durationUsage), ChatFormatting.GRAY, ChatFormatting.WHITE));
+        builder
+                .primary(resolveLangKey(LangKeys.FUNCTIONALITY), String.format("%.1f", durationUsage), true)
+                .empty();
 
-        if (Screen.hasShiftDown()) {
-            float cooldown = (float) MOD_CONFIG.getReturnerCooldown(this) / 20;
-
-            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.COOLDOWN);
-            components.addAll(LangHelper.format(key, String.format("%.1f", cooldown), ChatFormatting.GRAY, ChatFormatting.WHITE));
-
-            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.AVAILABILITY);
-            components.addAll(LangHelper.format(key, ChatFormatting.DARK_GRAY));
-
-            String levelKey = ALLOWED_LEVEL.location().getPath();
-            key = LangKeyGenerator.getDimension(levelKey);
-            components.addAll(LangHelper.format(key, ChatFormatting.YELLOW));
-
-            if (FEATURE_INJECTOR != null) {
-                key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.FEATURE);
-                components.addAll(LangHelper.format(key, ChatFormatting.DARK_GRAY));
-
-                key = LangKeyGenerator.getItemTooltip(this, LangKeys.FEATURE);
-                components.addAll(LangHelper.format(key, ChatFormatting.DARK_PURPLE));
-            }
-        } else {
-            key = LangKeyGenerator.getItemTooltip(CLASS_NAME_AS_ID, LangKeys.KEY_HOLD);
-            components.addAll(LangHelper.format(key, "SHIFT", ChatFormatting.DARK_GRAY, ChatFormatting.WHITE));
+        if (!Screen.hasShiftDown()) {
+            builder.secondary(resolveLangKey(LangKeys.KEY_HOLD), "SHIFT", false);
+            components.addAll(builder.build());
+            return;
         }
+
+        float cooldown = MOD_CONFIG.getReturnerCooldown(this) / 20f;
+        String levelKey = ALLOWED_LEVEL.location().getPath();
+
+        builder
+                .primary(resolveLangKey(LangKeys.COOLDOWN), String.format("%.1f", cooldown), true)
+                .empty()
+                .secondary(resolveLangKey(LangKeys.AVAILABILITY), false)
+                .highlighted(LangKeyGenerator.getDimension(levelKey), true);
+
+        if (FEATURE_INJECTOR != null) {
+            builder
+                    .empty()
+                    .secondary(resolveLangKey(LangKeys.FEATURE), false)
+                    .special(LangKeyGenerator.getItemTooltip(this, LangKeys.FEATURE), true);
+        }
+
+        components.addAll(builder.build());
     }
 
     @Override
