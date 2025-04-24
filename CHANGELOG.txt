@@ -4,4 +4,4 @@
 - Now, if teleportation to the spawn point is not successful, the cooldown will not be applied.
 - Added new item: Hell's Returner (allows teleportation across the Nether).
 - Improved tooltip description for mod items.
-- Added configuration for NeoForge to customize returners behavior.
+- Added configuration for NeoForge and Forge to customize returner behavior.
