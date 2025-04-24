@@ -1,6 +1,7 @@
 package com.github.bakycoder.backtobed.platform;
 
 import com.github.bakycoder.backtobed.BackToBed;
+import com.github.bakycoder.backtobed.config.NeoForgeConfigBuilderWrapper;
 import com.github.bakycoder.backtobed.config.ReturnerConfig;
 import com.github.bakycoder.backtobed.item.returner.Returner;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
@@ -15,7 +16,8 @@ import java.util.Map;
 
 @EventBusSubscriber(modid = BackToBed.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class NeoForgeModConfig implements IModConfig {
-    private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    private static final ModConfigSpec.Builder RAW_BUILDER = new ModConfigSpec.Builder();
+    private static final NeoForgeConfigBuilderWrapper BUILDER = new NeoForgeConfigBuilderWrapper(RAW_BUILDER);
 
     private static final ReturnerConfig GLOBAL_CONFIG = new ReturnerConfig(BUILDER, 60, 50, true);
     private static final Map<String, ReturnerConfig> RETURNER_CONFIGS = new HashMap<>();
@@ -25,7 +27,7 @@ public class NeoForgeModConfig implements IModConfig {
         RETURNER_CONFIGS.put("hells_returner", new ReturnerConfig("hells_returner", BUILDER, 70, 60, true));
     }
 
-    public static final ModConfigSpec SPEC = BUILDER.build();
+    public static final ModConfigSpec SPEC = RAW_BUILDER.build();
 
     @Override
     public int getReturnerDurationUsage(Returner returner) {
