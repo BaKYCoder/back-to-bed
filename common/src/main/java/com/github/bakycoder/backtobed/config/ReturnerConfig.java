@@ -1,17 +1,18 @@
 package com.github.bakycoder.backtobed.config;
 
-import net.neoforged.neoforge.common.ModConfigSpec;
+import com.github.bakycoder.backtobed.util.ConfigBuilder;
+import com.github.bakycoder.backtobed.util.ConfigValue;
 
 public class ReturnerConfig {
-    private final ModConfigSpec.ConfigValue<Integer> DURATION_USAGE;
-    private final ModConfigSpec.ConfigValue<Integer> COOLDOWN;
-    private final ModConfigSpec.ConfigValue<Boolean> SHOW_TOOLTIP;
+    private final ConfigValue<Integer> DURATION_USAGE;
+    private final ConfigValue<Integer> COOLDOWN;
+    private final ConfigValue<Boolean> SHOW_TOOLTIP;
 
     private int cachedDurationUsage;
     private int cachedCooldown;
     private boolean cachedShowTooltip;
 
-    public ReturnerConfig(ModConfigSpec.Builder builder, int defaultDuration, int defaultCooldown, boolean defaultTooltip) {
+    public ReturnerConfig(ConfigBuilder builder, int defaultDuration, int defaultCooldown, boolean defaultTooltip) {
         builder.comment("Global configuration for all returners")
                 .comment("Specific returners can override global values.")
                 .comment("(If set to -1, they will use the global configuration.)")
@@ -35,7 +36,7 @@ public class ReturnerConfig {
         builder.pop();
     }
 
-    public ReturnerConfig(String category, ModConfigSpec.Builder builder, int defaultDuration, int defaultCooldown, boolean defaultTooltip) {
+    public ReturnerConfig(String category, ConfigBuilder builder, int defaultDuration, int defaultCooldown, boolean defaultTooltip) {
         builder.comment("Specific settings for '" + category + "'").push(category);
 
         DURATION_USAGE = builder
