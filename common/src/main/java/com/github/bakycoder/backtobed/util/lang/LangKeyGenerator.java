@@ -18,10 +18,6 @@ public class LangKeyGenerator {
         return getSeparatedArgs(LangKeys.ITEM.getAsKey(), BackToBed.MOD_ID, itemId, category, suffix);
     }
 
-    public static String getTooltip(LangKeys lKey) {
-        return getSeparatedArgs(BackToBed.MOD_ID, LangKeys.TOOLTIP.getAsKey(), lKey.getAsKey());
-    }
-
     public static String getDimension(String dimension) {
         return getSeparatedArgs(BackToBed.MOD_ID, LangKeys.DIMENSION.getAsKey(), dimension);
     }
