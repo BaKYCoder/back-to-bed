@@ -22,7 +22,7 @@ public class BackToBedNeoForge {
         NeoForgeItemRegistrar.registerToEventBus(modEventBus);
         modEventBus.addListener(this::configureTabEntries);
 
-        modContainer.registerConfig(ModConfig.Type.SERVER, NeoForgeModConfig.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeModConfig.SPEC);
     }
 
     private void configureTabEntries(BuildCreativeModeTabContentsEvent event) {
