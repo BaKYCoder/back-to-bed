@@ -1,5 +1,7 @@
 package com.github.bakycoder.backtobed;
 
+import com.github.bakycoder.backtobed.config.ReturnerConfigFabric;
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -17,6 +19,8 @@ public class BackToBedFabric implements ModInitializer {
 
         BackToBed.initCommon();
         this.configureTabEntries();
+
+        MidnightConfig.init(BackToBed.MOD_ID, ReturnerConfigFabric.class);
     }
 
     public void configureTabEntries() {
