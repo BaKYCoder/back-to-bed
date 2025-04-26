@@ -3,21 +3,45 @@ package com.github.bakycoder.backtobed.platform;
 import com.github.bakycoder.backtobed.config.ReturnerConfigFabric;
 import com.github.bakycoder.backtobed.item.returner.Returner;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
+import eu.midnightdust.lib.config.MidnightConfig;
+import net.minecraft.core.registries.BuiltInRegistries;
 
-public class FabricModConfig implements IModConfig {
+import java.util.HashMap;
+import java.util.Map;
+
+public class FabricModConfig extends MidnightConfig implements IModConfig {
+
+    @Entry
+    public static ReturnerConfigFabric global = new ReturnerConfigFabric(60, 50, true);
+
+    @Entry
+    public static Map<String, ReturnerConfigFabric> returners = new HashMap<>();
+
+    static {
+        returners.put("magical_returner", new ReturnerConfigFabric(-1, -1, true));
+        returners.put("hells_returner", new ReturnerConfigFabric(70, 60, true));
+    }
 
     @Override
     public int getReturnerDurationUsage(Returner returner) {
-        return ReturnerConfigFabric.duration_usage;
+        String key = BuiltInRegistries.ITEM.getKey(returner).getPath();
+        ReturnerConfigFabric config = returners.getOrDefault(key, global);
+        int value = config.duration_usage;
+        return value == -1 ? global.duration_usage : value;
     }
 
     @Override
     public int getReturnerCooldown(Returner returner) {
-        return ReturnerConfigFabric.cooldown;
+        String key = BuiltInRegistries.ITEM.getKey(returner).getPath();
+        ReturnerConfigFabric config = returners.getOrDefault(key, global);
+        int value = config.cooldown;
+        return value == -1 ? global.cooldown : value;
     }
 
     @Override
     public boolean showReturnerTooltip(Returner returner) {
-        return ReturnerConfigFabric.show_tooltip;
+        String key = BuiltInRegistries.ITEM.getKey(returner).getPath();
+        ReturnerConfigFabric config = returners.getOrDefault(key, global);
+        return global.show_tooltip && config.show_tooltip;
     }
 }

@@ -3,12 +3,18 @@ package com.github.bakycoder.backtobed.config;
 import eu.midnightdust.lib.config.MidnightConfig;
 
 public class ReturnerConfigFabric extends MidnightConfig {
-    @Entry(min = 0, max = 72000)
-    public static int duration_usage = 60;
+    @Entry(min = -1, max = 72000)
+    public int duration_usage;
 
-    @Entry(min = 0, max = 72000)
-    public static int cooldown = 50;
+    @Entry(min = -1, max = 72000)
+    public int cooldown;
 
     @Entry
-    public static boolean show_tooltip = true;
+    public boolean show_tooltip;
+
+    public ReturnerConfigFabric(int duration, int cooldown, boolean tooltip) {
+        this.duration_usage = duration;
+        this.cooldown = cooldown;
+        this.show_tooltip = tooltip;
+    }
 }
