@@ -12,9 +12,9 @@ public class ReturnerConfigFabric extends MidnightConfig {
     @Entry
     public boolean show_tooltip;
 
-    public ReturnerConfigFabric(int duration, int cooldown, boolean tooltip) {
-        this.duration_usage = duration;
-        this.cooldown = cooldown;
-        this.show_tooltip = tooltip;
+    public ReturnerConfigFabric(ReturnerConfigPresets.Preset preset) {
+        this.duration_usage = preset.durationUsage();
+        this.cooldown = preset.cooldown();
+        this.show_tooltip = preset.showTooltip();
     }
 }
