@@ -27,8 +27,7 @@ public class ConfigEntry {
                     .defineInRange("cooldown", preset.cooldown(), 0, 72000);
 
             SHOW_TOOLTIP = builder
-                    .comment("Whether to show item details in the tooltip.")
-                    .comment("Set to false to disable tooltips for all returners.")
+                    .comment("Set to false to disable tooltips for all returners, regardless of individual settings.")
                     .define("show_tooltip", preset.showTooltip());
         } else {
             builder.comment("Specific configuration for '" + preset.name() + "' settings.")
