@@ -1,6 +1,7 @@
 package com.github.bakycoder.backtobed.platform;
 
 import com.github.bakycoder.backtobed.config.ReturnerConfigFabric;
+import com.github.bakycoder.backtobed.config.ReturnerConfigPresets;
 import com.github.bakycoder.backtobed.item.returner.Returner;
 import com.github.bakycoder.backtobed.platform.services.IModConfig;
 import eu.midnightdust.lib.config.MidnightConfig;
@@ -12,14 +13,14 @@ import java.util.Map;
 public class FabricModConfig extends MidnightConfig implements IModConfig {
 
     @Entry
-    public static ReturnerConfigFabric global = new ReturnerConfigFabric(60, 50, true);
+    public static ReturnerConfigFabric global = new ReturnerConfigFabric(ReturnerConfigPresets.GLOBAL);
 
     @Entry
     public static Map<String, ReturnerConfigFabric> returners = new HashMap<>();
 
     static {
-        returners.put("magical_returner", new ReturnerConfigFabric(-1, -1, true));
-        returners.put("hells_returner", new ReturnerConfigFabric(70, 60, true));
+        returners.put("magical_returner", new ReturnerConfigFabric(ReturnerConfigPresets.MAGICAL));
+        returners.put("hells_returner", new ReturnerConfigFabric(ReturnerConfigPresets.HELLS));
     }
 
     @Override
