@@ -5,3 +5,4 @@
 - Added new item: Hell's Returner (allows teleportation across the Nether).
 - Improved tooltip description.
 - Added configuration for NeoForge, Forge and Fabric to customize returner behavior.
+- Added new item: Mysterious Returner (allows teleportation across the End).
