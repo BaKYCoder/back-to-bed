@@ -1,8 +1,16 @@
 # Version 1.2.0
 
+## New Features
+- Added new item: **Hell's Returner** (allows teleportation across the Nether).
+- Added new item: **Mysterious Returner** (allows teleportation across the End).
+
+## Improvements
+- Tooltips now display hold duration, cooldown time, and teleportation location information.
+
+## Technical Changes
+- Added configuration for NeoForge, Forge, and Fabric to customize Returner behavior.
+  (See the [B2B GitHub Wiki](https://github.com/BaKYCoder/back-to-bed/wiki) for detailed setup instructions.)
+
+## Bug Fixes
 - Fixed an issue where the Magical Returner failed to display the condition for overworld teleportation.
-- Now, if teleportation to the spawn point is not successful, the cooldown will not be applied.
-- Added new item: Hell's Returner (allows teleportation across the Nether).
-- Improved tooltip description.
-- Added configuration for NeoForge, Forge and Fabric to customize returner behavior.
-- Added new item: Mysterious Returner (allows teleportation across the End).
+- Fixed an issue where cooldown was applied even if teleportation to the spawn point failed.
