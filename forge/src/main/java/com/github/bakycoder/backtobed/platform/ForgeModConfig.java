@@ -26,6 +26,7 @@ public class ForgeModConfig implements IModConfig {
     static {
         RETURNER_CONFIGS.put("magical_returner", new ConfigEntry(BUILDER, ReturnerConfigPresets.MAGICAL));
         RETURNER_CONFIGS.put("hells_returner", new ConfigEntry(BUILDER, ReturnerConfigPresets.HELLS));
+        RETURNER_CONFIGS.put("mysterious_returner", new ConfigEntry(BUILDER, ReturnerConfigPresets.MYSTERIOUS));
     }
 
     public static final ForgeConfigSpec SPEC = RAW_BUILDER.build();
