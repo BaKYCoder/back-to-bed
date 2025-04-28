@@ -19,7 +19,7 @@ public interface IEffectProvider {
         if (particles == null) return;
 
         respawn.sendParticles(
-                player, getParticles(), true, destination.x(), destination.y(), destination.z(),
+                player, getParticles(), true, destination.x(), destination.y() + 1, destination.z(),
                 85, .85D, .75D, .85D,
                 .005D
         );
