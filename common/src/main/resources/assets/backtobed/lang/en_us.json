@@ -14,6 +14,9 @@
 
   "item.backtobed.hells_returner": "Hell's Returner",
 
+  "item.backtobed.mysterious_returner": "Mysterious Returner",
+
   "backtobed.dimension.overworld": "Overworld",
-  "backtobed.dimension.the_nether": "Nether"
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
 }
