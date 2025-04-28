@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:ender_eye"
+    },
+    "P": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  },
+  "pattern": [
+    " # ",
+    "PAP",
+    " E "
+  ],
+  "result": {
+    "count": 1,
+    "id": "backtobed:mysterious_returner"
+  },
+  "show_notification": true
+}
