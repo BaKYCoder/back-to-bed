@@ -31,25 +31,25 @@ public class Returner extends Item {
     private static final IModConfig MOD_CONFIG = Services.getModConfig();
 
     private final ChatFormatting ITEM_COLOR_NAME;
-    private final ResourceKey<Level> ALLOWED_LEVEL;
+    private final List<ResourceKey<Level>> ALLOWED_LEVELS;
     private final IEffectProvider EFFECT_PROVIDER;
     private final IFeatureInjector FEATURE_INJECTOR;
 
-    public Returner(Properties properties, ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+    public Returner(Properties properties, ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
         super(properties);
 
         this.ITEM_COLOR_NAME = itemColorName;
-        this.ALLOWED_LEVEL = level;
+        this.ALLOWED_LEVELS = levels;
         this.EFFECT_PROVIDER = (provider != null) ? provider.get() : null;
         this.FEATURE_INJECTOR = (injector != null) ? injector.get() : null;
     }
 
-    public Returner(ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
-        this(new Item.Properties().stacksTo(1), itemColorName, level, provider, injector);
+    public Returner(ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+        this(new Item.Properties().stacksTo(1), itemColorName, levels, provider, injector);
     }
 
-    public Returner(ChatFormatting itemColorName, ResourceKey<Level> level, Supplier<IEffectProvider> provider) {
-        this(itemColorName, level, provider, null);
+    public Returner(ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider) {
+        this(itemColorName, levels, provider, null);
     }
 
     private static String resolveLangKey(LangKeys key) {
@@ -81,13 +81,16 @@ public class Returner extends Item {
         }
 
         float cooldown = MOD_CONFIG.getReturnerCooldown(this) / 20f;
-        String levelKey = ALLOWED_LEVEL.location().getPath();
 
         builder
                 .primary(resolveLangKey(LangKeys.COOLDOWN), String.format("%.1f", cooldown), true)
                 .empty()
-                .secondary(resolveLangKey(LangKeys.AVAILABILITY), false)
-                .highlighted(LangKeyGenerator.getDimension(levelKey), true);
+                .secondary(resolveLangKey(LangKeys.AVAILABILITY), false);
+
+        for(ResourceKey<Level> level : ALLOWED_LEVELS) {
+            String levelKey = level.location().getPath();
+            builder.highlighted(LangKeyGenerator.getDimension(levelKey), true);
+        }
 
         if (FEATURE_INJECTOR != null) {
             builder
@@ -131,9 +134,12 @@ public class Returner extends Item {
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
         if (usageDuration < MOD_CONFIG.getReturnerDurationUsage(this)) return;
 
-        if (player.getCommandSenderWorld().dimension() != ALLOWED_LEVEL) {
-            interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
-            return;
+        ResourceKey<Level> playerDimension = player.getCommandSenderWorld().dimension();
+        for(ResourceKey<Level> levelKey : ALLOWED_LEVELS) {
+            if (playerDimension != levelKey) {
+                interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
+                return;
+            }
         }
 
         BlockPos respawnPosition = player.getRespawnPosition();
