@@ -19,10 +19,10 @@ public class ItemRegistry {
     private static final IItemRegistrar REGISTRAR = Services.getItemRegistrar();
 
     public static final IItemRegistrar.IRegisteredItem<Item>
-            MAGICAL_RETURNER = REGISTRAR.register("magical_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.AQUA), List.of(Level.OVERWORLD), MagicalEffectProvider::new, MountFeatureInjector::new)),
-            HELLS_RETURNER = REGISTRAR.register("hells_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.YELLOW), List.of(Level.NETHER), HellsEffectProvider::new)),
-            MYSTERIOUS_RETURNER = REGISTRAR.register("mysterious_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.LIGHT_PURPLE), List.of(Level.END), MysteriousEffectProvider::new)),
-            TRESREALM_RETURNER = REGISTRAR.register("tresrealm_returner", () -> new Returner(TextColor.fromRgb(0xFFCC99), List.of(Level.OVERWORLD, Level.NETHER, Level.END), MysteriousEffectProvider::new));
+            MAGICAL_RETURNER = REGISTRAR.register("magical_returner", () -> new Returner(TextColor.fromRgb(0x84FFF0), List.of(Level.OVERWORLD), MagicalEffectProvider::new, MountFeatureInjector::new)),
+            HELLS_RETURNER = REGISTRAR.register("hells_returner", () -> new Returner(TextColor.fromRgb(0xFFFCB4), List.of(Level.NETHER), HellsEffectProvider::new)),
+            MYSTERIOUS_RETURNER = REGISTRAR.register("mysterious_returner", () -> new Returner(TextColor.fromRgb(0xC6FCFF), List.of(Level.END), MysteriousEffectProvider::new)),
+            TRESREALM_RETURNER = REGISTRAR.register("tresrealm_returner", () -> new Returner(TextColor.fromRgb(0xFFDBCA), List.of(Level.OVERWORLD, Level.NETHER, Level.END), MysteriousEffectProvider::new));
 
     public static void acceptItemsToTab(CreativeModeTab.Output output) {
         output.accept(MAGICAL_RETURNER.get());
