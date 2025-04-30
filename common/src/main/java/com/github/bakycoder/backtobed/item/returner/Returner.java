@@ -59,6 +59,7 @@ public class Returner extends Item {
 
     @Override
     public Component getName(ItemStack pStack) {
+        if(ITEM_COLOR_NAME == null) return super.getName(pStack);
         return Component.translatable(this.getDescriptionId(pStack)).withStyle(Style.EMPTY.withColor(this.ITEM_COLOR_NAME));
     }
 
