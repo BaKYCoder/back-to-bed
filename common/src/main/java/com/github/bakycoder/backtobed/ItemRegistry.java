@@ -8,6 +8,7 @@ import com.github.bakycoder.backtobed.item.returner.features.MountFeatureInjecto
 import com.github.bakycoder.backtobed.platform.Services;
 import com.github.bakycoder.backtobed.platform.services.IItemRegistrar;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
@@ -18,10 +19,9 @@ public class ItemRegistry {
     private static final IItemRegistrar REGISTRAR = Services.getItemRegistrar();
 
     public static final IItemRegistrar.IRegisteredItem<Item>
-            MAGICAL_RETURNER = REGISTRAR.register("magical_returner", () -> new Returner(ChatFormatting.AQUA, List.of(Level.OVERWORLD), MagicalEffectProvider::new, MountFeatureInjector::new)),
-            HELLS_RETURNER = REGISTRAR.register("hells_returner", () -> new Returner(ChatFormatting.YELLOW, List.of(Level.NETHER), HellsEffectProvider::new)),
-            MYSTERIOUS_RETURNER = REGISTRAR.register("mysterious_returner", () -> new Returner(ChatFormatting.LIGHT_PURPLE, List.of(Level.END), MysteriousEffectProvider::new));
-
+            MAGICAL_RETURNER = REGISTRAR.register("magical_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.AQUA), List.of(Level.OVERWORLD), MagicalEffectProvider::new, MountFeatureInjector::new)),
+            HELLS_RETURNER = REGISTRAR.register("hells_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.YELLOW), List.of(Level.NETHER), HellsEffectProvider::new)),
+            MYSTERIOUS_RETURNER = REGISTRAR.register("mysterious_returner", () -> new Returner(TextColor.fromLegacyFormat(ChatFormatting.LIGHT_PURPLE), List.of(Level.END), MysteriousEffectProvider::new));
     public static void acceptItemsToTab(CreativeModeTab.Output output) {
         output.accept(MAGICAL_RETURNER.get());
         output.accept(HELLS_RETURNER.get());
