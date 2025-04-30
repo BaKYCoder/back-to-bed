@@ -135,12 +135,9 @@ public class Returner extends Item {
         int usageDuration = this.getUseDuration(stack, entity) - remainingUseDuration;
         if (usageDuration < MOD_CONFIG.getReturnerDurationUsage(this)) return;
 
-        ResourceKey<Level> playerDimension = player.getCommandSenderWorld().dimension();
-        for(ResourceKey<Level> levelKey : ALLOWED_LEVELS) {
-            if (playerDimension != levelKey) {
-                interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
-                return;
-            }
+        if (!ALLOWED_LEVELS.contains(player.getCommandSenderWorld().dimension())) {
+            interruptItemUsage(InterruptionReason.FORBIDDEN_DIMENSION, player);
+            return;
         }
 
         BlockPos respawnPosition = player.getRespawnPosition();
