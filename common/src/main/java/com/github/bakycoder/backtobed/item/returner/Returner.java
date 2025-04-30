@@ -7,10 +7,11 @@ import com.github.bakycoder.backtobed.platform.services.IModConfig;
 import com.github.bakycoder.backtobed.util.TooltipBuilder;
 import com.github.bakycoder.backtobed.util.lang.LangKeyGenerator;
 import com.github.bakycoder.backtobed.util.lang.LangKeys;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,12 +31,12 @@ public class Returner extends Item {
     private static final String CLASS_NAME_AS_ID = Returner.class.getSimpleName().toLowerCase();
     private static final IModConfig MOD_CONFIG = Services.getModConfig();
 
-    private final ChatFormatting ITEM_COLOR_NAME;
+    private final TextColor ITEM_COLOR_NAME;
     private final List<ResourceKey<Level>> ALLOWED_LEVELS;
     private final IEffectProvider EFFECT_PROVIDER;
     private final IFeatureInjector FEATURE_INJECTOR;
 
-    public Returner(Properties properties, ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+    public Returner(Properties properties, TextColor itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
         super(properties);
 
         this.ITEM_COLOR_NAME = itemColorName;
@@ -44,11 +45,11 @@ public class Returner extends Item {
         this.FEATURE_INJECTOR = (injector != null) ? injector.get() : null;
     }
 
-    public Returner(ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
+    public Returner(TextColor itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider, Supplier<IFeatureInjector> injector) {
         this(new Item.Properties().stacksTo(1), itemColorName, levels, provider, injector);
     }
 
-    public Returner(ChatFormatting itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider) {
+    public Returner(TextColor itemColorName, List<ResourceKey<Level>> levels, Supplier<IEffectProvider> provider) {
         this(itemColorName, levels, provider, null);
     }
 
@@ -58,7 +59,7 @@ public class Returner extends Item {
 
     @Override
     public Component getName(ItemStack pStack) {
-        return Component.translatable(this.getDescriptionId(pStack)).withStyle(this.ITEM_COLOR_NAME);
+        return Component.translatable(this.getDescriptionId(pStack)).withStyle(Style.EMPTY.withColor(this.ITEM_COLOR_NAME));
     }
 
     @Override
