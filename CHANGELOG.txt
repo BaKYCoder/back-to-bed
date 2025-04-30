@@ -3,6 +3,7 @@
 ## New Features
 - Added new item: **Hell's Returner** (allows teleportation across the Nether).
 - Added new item: **Mysterious Returner** (allows teleportation across the End).
+- Added new item: **Tresrealm Returner** (allows teleportation across all vanilla dimensions).
 
 ## Improvements
 - Tooltips now display hold duration, cooldown time, and teleportation location information.
