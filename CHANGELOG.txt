@@ -15,3 +15,4 @@
 - Fixed an issue where the Magical Returner failed to display the condition for overworld teleportation.
 - Fixed an issue where cooldown was applied even if teleportation to the spawn point failed.
 - Fixed an issue where particles generated after teleportation had the wrong position.
+- Fixed an issue where the Returner's color name was reset after renaming it in an anvil.
