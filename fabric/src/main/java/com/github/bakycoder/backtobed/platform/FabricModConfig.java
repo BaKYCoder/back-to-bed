@@ -22,6 +22,7 @@ public class FabricModConfig extends MidnightConfig implements IModConfig {
         returners.put("magical_returner", new ReturnerConfigFabric(ReturnerConfigPresets.MAGICAL));
         returners.put("hells_returner", new ReturnerConfigFabric(ReturnerConfigPresets.HELLS));
         returners.put("mysterious_returner", new ReturnerConfigFabric(ReturnerConfigPresets.MYSTERIOUS));
+        returners.put("tresrealm_returner", new ReturnerConfigFabric(ReturnerConfigPresets.TRESREALM));
     }
 
     @Override
