@@ -13,8 +13,8 @@ public class MysteriousEffectProvider implements IEffectProvider {
     @Override
     public ParticleOptions getParticles() {
         return new DustColorTransitionOptions(
-                new Vector3f(.35F, .18F, .35F),
-                new Vector3f(.35F, .55F, .25F),
+                new Vector3f(.34F, .60F, .62F),
+                new Vector3f(.47F, .35F, .47F),
                 1f
         );
     }
