@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "U": {
+      "item": "backtobed:hells_returner"
+    },
+    "H": {
+      "item": "backtobed:magical_returner"
+    },
+    "M": {
+      "item": "backtobed:mysterious_returner"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "pattern": [
+    "#N#",
+    "UHM",
+    "AEA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "backtobed:tresrealm_returner"
+  },
+  "show_notification": true
+}
