@@ -15,8 +15,6 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 @Mod(BackToBed.MOD_ID)
 public class BackToBedNeoForge {
     public BackToBedNeoForge(IEventBus modEventBus, ModContainer modContainer) {
-        BackToBed.LOGGER.info("Hello NeoForge world!");
-
         BackToBed.initCommon();
 
         NeoForgeItemRegistrar.registerToEventBus(modEventBus);
