@@ -1,18 +1,18 @@
 package com.github.bakycoder.backtobed.config;
 
-import com.github.bakycoder.backtobed.util.ConfigBuilder;
-import com.github.bakycoder.backtobed.util.ConfigValue;
+import com.github.bakycoder.backtobed.api.IConfigBuilder;
+import com.github.bakycoder.backtobed.api.IConfigValue;
 
 public class ConfigEntry {
-    private final ConfigValue<Integer> DURATION_USAGE;
-    private final ConfigValue<Integer> COOLDOWN;
-    private final ConfigValue<Boolean> SHOW_TOOLTIP;
+    private final IConfigValue<Integer> DURATION_USAGE;
+    private final IConfigValue<Integer> COOLDOWN;
+    private final IConfigValue<Boolean> SHOW_TOOLTIP;
 
     private int cachedDurationUsage;
     private int cachedCooldown;
     private boolean cachedShowTooltip;
 
-    public ConfigEntry(ConfigBuilder builder, ReturnerConfigPresets.Preset preset, boolean isGlobal) {
+    public ConfigEntry(IConfigBuilder builder, ReturnerConfigPresets.Preset preset, boolean isGlobal) {
         if (isGlobal) {
             builder.comment("Global configuration for all returners.")
                     .comment("Individual returners can override these settings.")
@@ -49,7 +49,7 @@ public class ConfigEntry {
         builder.pop();
     }
 
-    public ConfigEntry(ConfigBuilder builder, ReturnerConfigPresets.Preset preset) {
+    public ConfigEntry(IConfigBuilder builder, ReturnerConfigPresets.Preset preset) {
         this(builder, preset, false);
     }
 

@@ -1,17 +1,17 @@
 package com.github.bakycoder.backtobed.config;
 
-import com.github.bakycoder.backtobed.util.ConfigBuilder;
-import com.github.bakycoder.backtobed.util.ConfigValue;
+import com.github.bakycoder.backtobed.api.IConfigBuilder;
+import com.github.bakycoder.backtobed.api.IConfigValue;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class NeoForgeConfigBuilderWrapper implements ConfigBuilder {
+public class NeoForgeConfigBuilderWrapper implements IConfigBuilder {
     private final ModConfigSpec.Builder builder;
 
     public NeoForgeConfigBuilderWrapper(ModConfigSpec.Builder builder) {
         this.builder = builder;
     }
 
-    @Override public ConfigBuilder comment(String comment) { builder.comment(comment); return this; }
+    @Override public IConfigBuilder comment(String comment) { builder.comment(comment); return this; }
     @Override public void push(String path) { builder.push(path); }
     @Override public void pop() { builder.pop(); }
 
@@ -21,7 +21,7 @@ public class NeoForgeConfigBuilderWrapper implements ConfigBuilder {
     }
 
     @Override
-    public ConfigValue<Integer> defineInRange(String name, int defaultValue, int min, int max) {
+    public IConfigValue<Integer> defineInRange(String name, int defaultValue, int min, int max) {
         return new NeoForgeConfigValueWrapper<>(builder.defineInRange(name, defaultValue, min, max));
     }
 }
