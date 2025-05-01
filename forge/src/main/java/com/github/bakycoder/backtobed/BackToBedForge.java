@@ -17,8 +17,6 @@ public class BackToBedForge {
     private static final IEventBus MOD_EVENT_BUS = FMLJavaModLoadingContext.get().getModEventBus();
 
     public BackToBedForge() {
-        BackToBed.LOGGER.info("Hello Forge world!");
-
         BackToBed.initCommon();
 
         ForgeItemRegistrar.registerToEventBus(MOD_EVENT_BUS);
