@@ -1,6 +1,19 @@
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
+    id 'com.modrinth.minotaur'
+}
+
+modrinth {
+    token = System.getenv('MODRINTH_TOKEN')
+    projectId = 'ZDK6mUGM'
+    versionName = "[${minecraft_version}] B2B (${version}, Fabric)"
+    versionNumber = "${version}"
+    versionType = 'release'
+    uploadFile = jar
+    changelog = rootProject.file('CHANGELOG.txt').text
+    gameVersions = ["1.21", "1.21.1"]
+    loaders = ['fabric']
 }
 
 repositories {

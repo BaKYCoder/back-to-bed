@@ -2,9 +2,22 @@ plugins {
     id 'multiloader-loader'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
+    id 'com.modrinth.minotaur'
 }
 base {
     archivesName = "${mod_id}-forge-${minecraft_version}"
+}
+
+modrinth {
+    token = System.getenv('MODRINTH_TOKEN')
+    projectId = 'ZDK6mUGM'
+    versionName = "[${minecraft_version}] B2B (${version}, Forge)"
+    versionNumber = "${version}"
+    versionType = 'release'
+    uploadFile = jar
+    changelog = rootProject.file('CHANGELOG.txt').text
+    gameVersions = ["1.21", "1.21.1"]
+    loaders = ['forge']
 }
 
 minecraft {
