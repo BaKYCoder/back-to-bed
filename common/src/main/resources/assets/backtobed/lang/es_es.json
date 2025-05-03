@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Mantén clic derecho durante %1%f seg. para teletransportarte a tu cama.",
+  "item.backtobed.returner.tooltip.cooldown": "Tiene un enfriamiento de %1%f seg. después de la teletransportación.",
+  "item.backtobed.returner.tooltip.key_hold": "Mantén [%1%s] para más información...",
+  "item.backtobed.returner.tooltip.availability": "Funciona en:",
+  "item.backtobed.returner.tooltip.feature": "Característica:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Este Regresador no funciona en esta dimensión.",
+  "item.backtobed.returner.condition.no_respawn_point": "No hay punto de reaparición establecido, teletransporte fallido.",
+  "item.backtobed.returner.condition.no_access_to_bed": "No se puede acceder a tu cama, puede que haya sido destruida.",
+
+  "item.backtobed.magical_returner": "Regresador Mágico",
+  "item.backtobed.magical_returner.tooltip.feature": "Incluye a tu montura si estás montado.",
+
+  "item.backtobed.hells_returner": "Regresador Infernal",
+
+  "item.backtobed.mysterious_returner": "Regresador Misterioso",
+
+  "item.backtobed.tresrealm_returner": "Regresador de Tres Reinos",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
+}

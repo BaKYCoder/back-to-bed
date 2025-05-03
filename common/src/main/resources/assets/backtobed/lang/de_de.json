@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Halte Rechtsklick %1%f Sek. lang, um dich zu deinem Bett zu teleportieren.",
+  "item.backtobed.returner.tooltip.cooldown": "Hat eine Abklingzeit von %1%f Sek. nach der Teleportation.",
+  "item.backtobed.returner.tooltip.key_hold": "Halte [%1%s] für Details...",
+  "item.backtobed.returner.tooltip.availability": "Funktioniert in:",
+  "item.backtobed.returner.tooltip.feature": "Besonderheit:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Dieser Rückführer funktioniert in dieser Dimension nicht.",
+  "item.backtobed.returner.condition.no_respawn_point": "Kein Respawnpunkt gesetzt, Teleportation fehlgeschlagen.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Bett nicht erreichbar – möglicherweise zerstört.",
+
+  "item.backtobed.magical_returner": "Magischer Rückführer",
+  "item.backtobed.magical_returner.tooltip.feature": "Teleportiert auch dein Reittier, wenn du reitest.",
+
+  "item.backtobed.hells_returner": "Höllischer Rückführer",
+
+  "item.backtobed.mysterious_returner": "Geheimnisvoller Rückführer",
+
+  "item.backtobed.tresrealm_returner": "Dreirealmen Rückführer",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "Ende"
+}

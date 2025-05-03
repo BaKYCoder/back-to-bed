@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Przytrzymaj prawy przycisk myszy przez %1%f sek., aby teleportować się do łóżka.",
+  "item.backtobed.returner.tooltip.cooldown": "Czas odnowienia: %1%f sek. po teleportacji.",
+  "item.backtobed.returner.tooltip.key_hold": "Przytrzymaj [%1%s] dla szczegółów...",
+  "item.backtobed.returner.tooltip.availability": "Działa w:",
+  "item.backtobed.returner.tooltip.feature": "Cecha:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Ten Powrotnik nie działa w tej wymiarze.",
+  "item.backtobed.returner.condition.no_respawn_point": "Nie ustawiono punktu respawnu, teleportacja nie powiodła się.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Nie można dotrzeć do łóżka, może zostało zniszczone.",
+
+  "item.backtobed.magical_returner": "Magiczny Powrotnik",
+  "item.backtobed.magical_returner.tooltip.feature": "Włącza twojego wierzchowca do teleportacji, jeśli na nim jedziesz.",
+
+  "item.backtobed.hells_returner": "Piekielny Powrotnik",
+
+  "item.backtobed.mysterious_returner": "Tajemniczy Powrotnik",
+
+  "item.backtobed.tresrealm_returner": "Powrotnik Trzech Królestw",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
+}

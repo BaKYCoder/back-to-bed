@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Удерживайте правую кнопку мыши в течение %1%f сек., чтобы телепортироваться к своей кровати.",
+  "item.backtobed.returner.tooltip.cooldown": "Перезарядка: %1%f сек. после телепортации.",
+  "item.backtobed.returner.tooltip.key_hold": "Удерживайте [%1%s] для подробностей...",
+  "item.backtobed.returner.tooltip.availability": "Работает в:",
+  "item.backtobed.returner.tooltip.feature": "Особенность:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Этот Возвратник не работает в этом измерении.",
+  "item.backtobed.returner.condition.no_respawn_point": "Точка возрождения не установлена, телепортация не удалась.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Невозможно добраться до вашей кровати, возможно, она была разрушена.",
+
+  "item.backtobed.magical_returner": "Магический Возвратник",
+  "item.backtobed.magical_returner.tooltip.feature": "Включает ваше ездовое животное в телепортацию, если вы на нем едете.",
+
+  "item.backtobed.hells_returner": "Адский Возвратник",
+
+  "item.backtobed.mysterious_returner": "Таинственный Возвратник",
+
+  "item.backtobed.tresrealm_returner": "Возвратник Трех Царств",
+
+  "backtobed.dimension.overworld": "Верхний мир",
+  "backtobed.dimension.the_nether": "Незер",
+  "backtobed.dimension.the_end": "Энд"
+}

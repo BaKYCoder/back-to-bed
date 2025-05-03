@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Maintenez le clic droit pendant %1%f sec. pour vous téléporter à votre lit.",
+  "item.backtobed.returner.tooltip.cooldown": "A un temps de recharge de %1%f sec. après la téléportation.",
+  "item.backtobed.returner.tooltip.key_hold": "Maintenez [%1%s] pour plus de détails...",
+  "item.backtobed.returner.tooltip.availability": "Fonctionne dans :",
+  "item.backtobed.returner.tooltip.feature": "Particularité :",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Ce Retourneur ne fonctionne pas dans cette dimension.",
+  "item.backtobed.returner.condition.no_respawn_point": "Aucun point de réapparition défini, téléportation échouée.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Impossible d’atteindre votre lit, il a peut-être été détruit.",
+
+  "item.backtobed.magical_returner": "Retourneur Magique",
+  "item.backtobed.magical_returner.tooltip.feature": "Inclut votre monture dans la téléportation si vous êtes en train de monter.",
+
+  "item.backtobed.hells_returner": "Retourneur Infernal",
+
+  "item.backtobed.mysterious_returner": "Retourneur Mystérieux",
+
+  "item.backtobed.tresrealm_returner": "Retourneur des Trois Royaumes",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
+}

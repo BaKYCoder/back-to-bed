@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Tieni premuto il tasto destro per %1%f sec. per teletrasportarti al tuo letto.",
+  "item.backtobed.returner.tooltip.cooldown": "Ha un tempo di ricarica di %1%f sec. dopo il teletrasporto.",
+  "item.backtobed.returner.tooltip.key_hold": "Tieni premuto [%1%s] per maggiori dettagli...",
+  "item.backtobed.returner.tooltip.availability": "Funziona in:",
+  "item.backtobed.returner.tooltip.feature": "Caratteristica:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Questo Riportatore non funziona in questa dimensione.",
+  "item.backtobed.returner.condition.no_respawn_point": "Nessun punto di respawn impostato, teletrasporto fallito.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Impossibile raggiungere il tuo letto, potrebbe essere stato distrutto.",
+
+  "item.backtobed.magical_returner": "Riportatore Magico",
+  "item.backtobed.magical_returner.tooltip.feature": "Include la tua cavalcatura nel teletrasporto se stai cavalcando.",
+
+  "item.backtobed.hells_returner": "Riportatore Infernale",
+
+  "item.backtobed.mysterious_returner": "Riportatore Misterioso",
+
+  "item.backtobed.tresrealm_returner": "Riportatore dei Tre Regni",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
+}

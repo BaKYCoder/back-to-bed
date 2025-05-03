@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Držte pravé tlačítko %1%f sek. pro teleportaci do postele.",
+  "item.backtobed.returner.tooltip.cooldown": "Cooldown %1%f sek. po teleportaci.",
+  "item.backtobed.returner.tooltip.key_hold": "Podržte [%1%s] pro více informací...",
+  "item.backtobed.returner.tooltip.availability": "Funguje v:",
+  "item.backtobed.returner.tooltip.feature": "Vlastnost:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Tento Návratník v této dimenzi nefunguje",
+  "item.backtobed.returner.condition.no_respawn_point": "Bod znovuzrození není nastaven, teleportace selhala",
+  "item.backtobed.returner.condition.no_access_to_bed": "Nelze se dostat k posteli, možná byla zničena",
+
+  "item.backtobed.magical_returner": "Magický Návratník",
+  "item.backtobed.magical_returner.tooltip.feature": "Teleportuje i tvého tvora, pokud na něm jedeš.",
+
+  "item.backtobed.hells_returner": "Pekelný Návratník",
+
+  "item.backtobed.mysterious_returner": "Záhadný Návratník",
+
+  "item.backtobed.tresrealm_returner": "Trojříšský Návratník",
+
+  "backtobed.dimension.overworld": "Overworld",
+  "backtobed.dimension.the_nether": "Nether",
+  "backtobed.dimension.the_end": "End"
+}

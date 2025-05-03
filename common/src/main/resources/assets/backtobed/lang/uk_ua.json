@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "Утримуйте праву кнопку миші протягом %1%f сек., щоб телепортуватися до свого ліжка.",
+  "item.backtobed.returner.tooltip.cooldown": "Час перезарядки: %1%f сек. після телепортації.",
+  "item.backtobed.returner.tooltip.key_hold": "Утримуйте [%1%s] для подробиць...",
+  "item.backtobed.returner.tooltip.availability": "Працює в:",
+  "item.backtobed.returner.tooltip.feature": "Особливість:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "Цей Повертач не працює в цьому вимірі.",
+  "item.backtobed.returner.condition.no_respawn_point": "Точка відродження не встановлена, телепортація не вдалася.",
+  "item.backtobed.returner.condition.no_access_to_bed": "Неможливо дістатися до вашого ліжка, можливо, воно було зруйноване.",
+
+  "item.backtobed.magical_returner": "Магічний Повертач",
+  "item.backtobed.magical_returner.tooltip.feature": "Дозволяє телепортувати разом з вашим їздовим тваринам, коли ви на ньому їдете.",
+
+  "item.backtobed.hells_returner": "Пекельний Повертач",
+
+  "item.backtobed.mysterious_returner": "Містичний Повертач",
+
+  "item.backtobed.tresrealm_returner": "Повертач Трьох Царств",
+
+  "backtobed.dimension.overworld": "Надсвіт",
+  "backtobed.dimension.the_nether": "Незер",
+  "backtobed.dimension.the_end": "Енд"
+}
