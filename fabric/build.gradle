@@ -10,10 +10,15 @@ modrinth {
     versionName = "[${minecraft_version}] B2B (${version}, Fabric)"
     versionNumber = "${version}"
     versionType = 'release'
-    uploadFile = jar
+    uploadFile = remapJar
     changelog = rootProject.file('CHANGELOG.txt').text
     gameVersions = ["1.21", "1.21.1"]
     loaders = ['fabric']
+
+    dependencies {
+        required.project "P7dR8mSH"
+        required.project "codAaoxh"
+    }
 }
 
 repositories {
