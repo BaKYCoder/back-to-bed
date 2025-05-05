@@ -1,7 +1,10 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id 'multiloader-loader'
     id 'net.neoforged.moddev'
     id 'com.modrinth.minotaur'
+    id 'net.darkhax.curseforgegradle'
 }
 
 modrinth {
@@ -14,6 +17,16 @@ modrinth {
     changelog = rootProject.file('CHANGELOG.txt').text
     gameVersions = ["1.21", "1.21.1"]
     loaders = ['neoforge']
+}
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = System.getenv('CURSEFORGE_TOKEN')
+    def mainFile = upload('886555', jar)
+    mainFile.changelog = rootProject.file('CHANGELOG.txt').text
+    mainFile.changelogType = 'markdown'
+    mainFile.releaseType = 'release'
+    mainFile.addModLoader('neoforge')
+    mainFile.addGameVersion('1.21', '1.21.1')
 }
 
 neoForge {

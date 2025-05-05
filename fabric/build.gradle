@@ -1,7 +1,10 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id 'multiloader-loader'
     id 'fabric-loom'
     id 'com.modrinth.minotaur'
+    id 'net.darkhax.curseforgegradle'
 }
 
 modrinth {
@@ -19,6 +22,16 @@ modrinth {
         required.project "P7dR8mSH"
         required.project "codAaoxh"
     }
+}
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = System.getenv('CURSEFORGE_TOKEN')
+    def mainFile = upload('886555', remapJar)
+    mainFile.changelog = rootProject.file('CHANGELOG.txt').text
+    mainFile.changelogType = 'markdown'
+    mainFile.releaseType = 'release'
+    mainFile.addModLoader('fabric')
+    mainFile.addGameVersion('1.21', '1.21.1')
 }
 
 repositories {

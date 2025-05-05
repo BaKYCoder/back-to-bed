@@ -1,9 +1,13 @@
+import net.darkhax.curseforgegradle.TaskPublishCurseForge
+
 plugins {
     id 'multiloader-loader'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
     id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
     id 'com.modrinth.minotaur'
+    id 'net.darkhax.curseforgegradle'
 }
+
 base {
     archivesName = "${mod_id}-forge-${minecraft_version}"
 }
@@ -18,6 +22,16 @@ modrinth {
     changelog = rootProject.file('CHANGELOG.txt').text
     gameVersions = ["1.21", "1.21.1"]
     loaders = ['forge']
+}
+
+tasks.register('publishCurseForge', TaskPublishCurseForge) {
+    apiToken = System.getenv('CURSEFORGE_TOKEN')
+    def mainFile = upload('886555', jar)
+    mainFile.changelog = rootProject.file('CHANGELOG.txt').text
+    mainFile.changelogType = 'markdown'
+    mainFile.releaseType = 'release'
+    mainFile.addModLoader('forge')
+    mainFile.addGameVersion('1.21', '1.21.1')
 }
 
 minecraft {
