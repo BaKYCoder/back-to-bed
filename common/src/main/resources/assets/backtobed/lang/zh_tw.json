@@ -1,0 +1,24 @@
+{
+  "item.backtobed.returner.tooltip.functionality": "等待 %1%f 秒後回到床上。",
+  "item.backtobed.returner.tooltip.cooldown": "%1%f 傳送冷卻時間。",
+  "item.backtobed.returner.tooltip.key_hold": "右鍵 [%1%s] 查看細節",
+  "item.backtobed.returner.tooltip.availability": "維度:",
+  "item.backtobed.returner.tooltip.feature": "Feature:",
+
+  "item.backtobed.returner.condition.forbidden_dimension": "無法在此維度使用。",
+  "item.backtobed.returner.condition.no_respawn_point": "傳送失敗",
+  "item.backtobed.returner.condition.no_access_to_bed": "無法傳送，它可能會壞掉。",
+
+  "item.backtobed.magical_returner": "主世界返家器",
+  "item.backtobed.magical_returner.tooltip.feature": "連同騎乘中的坐騎傳送回家。",
+
+  "item.backtobed.hells_returner": "地獄返家器",
+
+  "item.backtobed.mysterious_returner": "終界返家器",
+
+  "item.backtobed.tresrealm_returner": "三界返家器",
+
+  "backtobed.dimension.overworld": "主世界",
+  "backtobed.dimension.the_nether": "地獄",
+  "backtobed.dimension.the_end": "終界"
+}
